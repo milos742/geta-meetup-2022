@@ -1,0 +1,16 @@
+.button--start {
+	display: flex !important;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding: 10px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.button--disabled {
+	pointer-events: none;
+	background-color: rgb(177, 177, 177);
+	color: rgb(126, 126, 126);
+	cursor: no-drop;
+}

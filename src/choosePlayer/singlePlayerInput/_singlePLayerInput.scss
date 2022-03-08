@@ -1,0 +1,25 @@
+.player {
+	display: flex;
+	align-items: flex-end;
+	width: 100%;
+	.button {
+		margin-left: 20px;
+	}
+}
+
+.player__label {
+    font-weight: bold;
+	width: calc(100% - 70px);
+    span {
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+}
+
+.player__input {
+	width: 100%;
+	min-height: 50px;
+	padding: 15px;
+	border: none;
+	border-radius: 25px;
+}

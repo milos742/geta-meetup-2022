@@ -1,0 +1,53 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: $primary;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin-top: 0;
+}
+
+a,
+a:hover,
+a:active,
+a:visited {
+	// color: #fff;
+	text-decoration: none;
+}
+
+button,
+input {
+	cursor: pointer;
+	font-weight: bold;
+	&:focus {
+		outline: none;
+	}
+	&:focus-visible {
+		outline: none;
+	}
+}
+
+.button {
+	color: $focus;
+	font-weight: bold;
+
+	&.active,
+	&:hover {
+		background-color: $focus;
+		color: $accent;
+	}
+	&:hover {
+		background-color: $focus;
+	}
+}

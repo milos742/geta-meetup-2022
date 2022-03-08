@@ -1,0 +1,15 @@
+button {
+	background: transparent;
+	border: none;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+.button {
+	background-color: $accent;
+	border-radius: 25px;
+	text-align: center;
+	padding: 5px;
+}

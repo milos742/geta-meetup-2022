@@ -1,0 +1,10 @@
+// ===== Global Stylings
+@import "./vars";
+@import "./layout";
+@import "./reset";
+
+// ===== Component stylings
+@import "../choosePLayer/choosePlayer";
+@import "../buttons/button";
+@import "../games/listOfGames";
+@import "../homepage/homepage.scss";
