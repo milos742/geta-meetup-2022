@@ -11,3 +11,13 @@
 	color: var(--light);
 	text-transform: uppercase;
 }
+
+.input_wrapper label {
+	width: calc(100% - 70px);
+}
+
+.input_wrapper {
+	display: flex;
+	align-items: flex-end;
+	width: 100%;
+}
