@@ -1,3 +1,36 @@
 :root {
-    
+	/* Colors */
+	--light: #fff;
+	--dark: #141414;
+	--accent: #a8dadb;
+	--green: #00433f;
+	--gray: #404040;
+	--lgray: #7c7c7c;
+
+	/* Containers */
+	--container: 600px;
+	--side-bumper: 20px;
+
+	/* Font sizes */
+	--x-small: 12px;
+	--small: 16px;
+	--medium: 18px;
+	--large: 24px;
+	--x-large: 26px;
+	--huge: 34px;
+
+	/* Fonts */
+	--thin: 400;
+	--normal: 500;
+	--bold: 700;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	color: var(--light);
 }

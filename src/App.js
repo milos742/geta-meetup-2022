@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Start } from "./views/Start/Start";
 import { Result } from "./views/Result/Result";
 import { Game } from "./views/Game/Game";
-import "./index.css";
 import "./theme.css";
+import "./index.css";
 
 function App() {
 	return (

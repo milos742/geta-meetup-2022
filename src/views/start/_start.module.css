@@ -1,3 +1,13 @@
 .start {
-	color: red;
+	max-width: var(--container);
+	margin: 0 auto;
+	padding-left: var(--side-bumper);
+	padding-right: var(--side-bumper);
+}
+
+.start h1 {
+	font-size: var(--large);
+	text-align: center;
+	color: var(--light);
+	text-transform: uppercase;
 }
