@@ -2,7 +2,8 @@ import style from "./_input.module.css";
 
 export function Input(props) {
 	const { placeholder, callback, type, label } = props;
-	if (label !== "") {
+
+	if (label && label !== "") {
 		return (
 			<label className={style.label}>
 				<span className={style.label_text}>{label}</span>
