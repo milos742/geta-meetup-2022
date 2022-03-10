@@ -1,7 +1,8 @@
+import React from "react";
 import style from "./_input.module.css";
 
-export function Input(props) {
-	const { placeholder, callback, type, label } = props;
+function InputFC(props, ref) {
+	const { placeholder, onChange, type, label } = props;
 
 	if (label && label !== "") {
 		return (
@@ -11,8 +12,9 @@ export function Input(props) {
 				<input
 					className={style.input}
 					type={type}
+					ref={ref}
 					placeholder={placeholder}
-					onChange={callback}
+					onChange={onChange}
 				/>
 			</label>
 		);
@@ -21,9 +23,12 @@ export function Input(props) {
 			<input
 				className={style.input}
 				type={type}
+				ref={ref}
 				placeholder={placeholder}
-				onChange={callback}
+				onChange={onChange}
 			/>
 		);
 	}
 }
+
+export const Input = React.forwardRef(InputFC);

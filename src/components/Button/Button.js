@@ -1,17 +1,16 @@
 import style from "./_button.module.css";
+import classNames from "classnames";
 
-export function Button(props) {
-	const { text, callback, type } = props;
+export function Button({children, className, type = 'primary', ...rest}) {
+
+	className = classNames(style.btn, className,
+		{[style.primary] : type === 'primary', 
+		[style.secondary] : type === 'secondary'},
+	);
 
 	return (
-		<button
-			className={
-				type === "circle"
-					? `${style.btn} ${style.btn_circle}`
-					: `${style.btn} ${style.btn_primary}`
-			}
-			onClick={callback}>
-			{text}
+		<button className={className} {...rest}>
+			{children}
 		</button>
 	);
 }

@@ -1,20 +1,23 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Start } from "./views/Start/Start";
-import { Result } from "./views/Result/Result";
-import { Game } from "./views/Game/Game";
+import { Start } from "./views/start/start";
+import { Result } from "./views/result/result";
+import { Game } from "./views/game/game";
 import "./theme.css";
 import "./index.css";
+import { GameProvider } from "./components/GameProvider/GameProvider";
 
 function App() {
 	return (
 		<div className="App">
-			<BrowserRouter>
-				<Routes>
-					<Route path={`/`} element={<Start />} />
-					<Route path={`/game`} element={<Game />} />
-					<Route path={`/result`} element={<Result />} />
-				</Routes>
-			</BrowserRouter>
+			<GameProvider>
+				<BrowserRouter>
+					<Routes>
+						<Route path={`/`} element={<Start />} />
+						<Route path={`/game`} element={<Game />} />
+						<Route path={`/result`} element={<Result />} />
+					</Routes>
+				</BrowserRouter>
+			</GameProvider>
 		</div>
 	);
 }
