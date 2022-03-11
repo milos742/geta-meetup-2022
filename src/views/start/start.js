@@ -24,7 +24,7 @@ export function Start() {
 
 	const [inputVal, setInputVal] = useState('');
 
-	const isLinkDisabled = Object.values(gameState.players).length <= 1 && gameState.selectedGame
+	const isLinkDisabled = Object.values(gameState.players).length <= 1 && !gameState.selectedGame
 	
 	const linkClassName = classNames(style.link,
 		{[style.linkDisabled] : isLinkDisabled });
