@@ -1,24 +1,15 @@
-import winner from "../../assets/icons/avatar--winner";
-import avatar from "../../assets/icons/avatar";
-
+import avatarWinner from "../../assets/icons/avatar--big.svg";
+import avatar from "../../assets/icons/avatar.svg";
 import style from "./_avatar.module.css";
 
-export function Avatar(props) {
-	const { name, type } = props;
+export function Avatar({label, winner = false}) {
+
+	const imgSrc = winner ? avatarWinner : avatar
 
 	return (
-		<div>
-			<div>
-				{type && type === "winner" ? (
-					<img src={winner} />
-				) : (
-					<img src={avatar} />
-				)}
-			</div>
-
-			<div>
-				<p>{name?.name}</p>
-			</div>
+		<div className={style.avatar}>
+			<img src={imgSrc} />
+			<p>{label}</p>
 		</div>
 	);
 }

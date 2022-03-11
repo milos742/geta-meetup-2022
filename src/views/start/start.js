@@ -1,25 +1,42 @@
+import {
+	useRef,
+	useState,
+} from "react";
 
-import { Logo } from "../../components/Logo/Logo";
-import style from "./_start.module.css";
-import { Button } from "../../components/Button/Button";
-import { Input } from "../../components/Input/Input";
+import classNames from "classnames";
 import { Link } from "react-router-dom";
-import { useGameContext, useGameDispatch } from "../../components/GameProvider/GameProvider";
-import { useRef } from "react";
+
+import { Avatar } from "../../components/Avatar/Avatar";
+import { Button } from "../../components/Button/Button";
+import {
+	useGameContext,
+	useGameDispatch,
+} from "../../components/GameProvider/GameProvider";
+import { Input } from "../../components/Input/Input";
+import { Logo } from "../../components/Logo/Logo";
+import { games } from "../../utils/constants";
+import style from "./_start.module.css";
 
 export function Start() {
-	const dispatch = useGameDispatch();
 	const inputRef = useRef();
+	const dispatch = useGameDispatch();
 	const gameState = useGameContext();
 
-	const games = ['301', '501'];
+	const [inputVal, setInputVal] = useState('');
+
+	const isLinkDisabled = Object.values(gameState.players).length <= 1 && gameState.selectedGame
+	
+	const linkClassName = classNames(style.link,
+		{[style.linkDisabled] : isLinkDisabled });
 
 	const handlePlayerAdd = (event) => {
 		event.preventDefault();
 		dispatch({
 			type: 'ADD_PLAYER',
 			payload: inputRef.current.value
-		})
+		});
+		setInputVal(!inputVal);
+		inputRef.current.value = '';
 	}
 
 	const handlePlayerRemove = (data) => {
@@ -48,22 +65,26 @@ export function Start() {
 					label="Add players:"
 					name='player'
 					ref={inputRef}
+					value={inputVal}
+					onChange={e => setInputVal(e.target.value)}
 				/>
 
-				<Button className={style.btnAddPlayer} onClick={handlePlayerAdd}>
+				<Button 
+				disabled={!inputVal}
+				className={style.btnAddPlayer} onClick={handlePlayerAdd}>
 					+
 				</Button>
 
 			</form>
 
-			<div>
+			<div className={style.avatarWrapper}>
 				{
 					Object.values(gameState.players).map((player) => (
-						<button
+						<Avatar
+							key={player.id}
+							label={player.name}
 							onClick={() => handlePlayerRemove(player.id)}
-							key={player.id}>
-							{player.name}
-						</button>
+						/>
 					))
 				}
 			</div>
@@ -71,7 +92,7 @@ export function Start() {
 			<h2>Choose game:</h2>
 			<div className={style.inputWrapper}>
 
-				{games.map(g =>
+				{Object.values(games).map(g =>
 					<Button
 						key={g}
 						className={`${style.btn} ${g === gameState.selectedGame && style.selected}`}
@@ -83,7 +104,7 @@ export function Start() {
 
 			</div>
 
-			<Link to={`/game`} className={style.link}>
+			<Link to={`/game`} className={linkClassName}>
 				start
 			</Link>
 		</div>

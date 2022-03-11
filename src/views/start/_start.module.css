@@ -38,9 +38,20 @@
     color: var(--secondary-color);
 }
 
+.linkDisabled {
+    background-color: var(--lgray);
+    color: var(--gray);
+	pointer-events: none;
+}
+
 button.selected,
 button.selected:hover {
 	background-color: var(--primary-color);
 	color: var(--secondary-color);
+}
+
+.avatarWrapper {
+	display: flex;
+	padding: 20px 0;
 }
 

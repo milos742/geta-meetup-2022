@@ -1,10 +1,16 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Start } from "./views/start/start";
-import { Result } from "./views/result/result";
-import { Game } from "./views/game/game";
 import "./theme.css";
 import "./index.css";
+
+import {
+	BrowserRouter,
+	Route,
+	Routes,
+} from "react-router-dom";
+
 import { GameProvider } from "./components/GameProvider/GameProvider";
+import { Game } from "./views/game/game";
+import { Result } from "./views/result/result";
+import { Start } from "./views/start/start";
 
 function App() {
 	return (
