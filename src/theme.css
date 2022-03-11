@@ -6,6 +6,8 @@
 	--green: #00433f;
 	--gray: #404040;
 	--lgray: #7c7c7c;
+	--error: #ff3333;
+	--error--dark: #a50f0f;
 
 	--primary-color: var(--green);
 	--secondary-color: var(--accent);

@@ -5,11 +5,9 @@ import style from "./_avatar.module.css";
 
 export function Avatar({label, winner = false, onClick}) {
 
-	const imgSrc = winner ? avatarWinner : avatar
-
 	return (
 		<div className={style.avatar}>
-			<img src={imgSrc} alt='icon--avatar' />
+			<img src={winner ? avatarWinner : avatar} alt='avatar' />
 			<p>{label}</p>
 			<Button
 				onClick={onClick}
