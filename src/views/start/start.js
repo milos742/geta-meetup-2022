@@ -24,10 +24,10 @@ export function Start() {
 
 	const [inputVal, setInputVal] = useState('');
 
-	const isLinkDisabled = Object.values(gameState.players).length <= 1 && !gameState.selectedGame
+	const isLinkDisabled = Object.values(gameState.players).length >= 2 && !!gameState.selectedGame;
 	
 	const linkClassName = classNames(style.link,
-		{[style.linkDisabled] : isLinkDisabled });
+		{[style.linkDisabled] : !isLinkDisabled });
 
 	const handlePlayerAdd = (event) => {
 		event.preventDefault();
@@ -55,7 +55,6 @@ export function Start() {
 		}
 	}
 
-
 	return (
 		<div className={style.start}>
 			<Logo />
@@ -70,8 +69,9 @@ export function Start() {
 				/>
 
 				<Button 
-				disabled={!inputVal}
-				className={style.btnAddPlayer} onClick={handlePlayerAdd}>
+					disabled={!inputVal}
+					className={style.btnAddPlayer} onClick={handlePlayerAdd}
+				>
 					+
 				</Button>
 
