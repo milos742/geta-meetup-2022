@@ -70,24 +70,28 @@ export function Start() {
 
 				<Button 
 					disabled={!inputVal}
-					className={style.btnAddPlayer} onClick={handlePlayerAdd}
+					className={style.btnAddPlayer}
+					onClick={handlePlayerAdd}
 				>
 					+
 				</Button>
 
 			</form>
 
-			<div className={style.avatarWrapper}>
+			<ul className={style.avatarWrapper}>
 				{
 					Object.values(gameState.players).map((player) => (
+						<li>
 						<Avatar
 							key={player.id}
 							label={player.name}
 							onClick={() => handlePlayerRemove(player.id)}
 						/>
+
+						</li>
 					))
 				}
-			</div>
+			</ul>
 
 			<h2>Choose game:</h2>
 			<div className={style.inputWrapper}>
@@ -104,7 +108,8 @@ export function Start() {
 
 			</div>
 
-			<Link to={`/game`} className={linkClassName}>
+			{/* <Link to={`/game`} className={linkClassName}> */}
+			<Link to={`/result`} className={linkClassName}>
 				start
 			</Link>
 		</div>
