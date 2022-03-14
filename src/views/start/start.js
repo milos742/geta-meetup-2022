@@ -107,8 +107,6 @@ export function Start() {
 				)}
 
 			</div>
-
-			{/* <Link to={`/game`} className={linkClassName}> */}
 			<Link to={`/game`} className={linkClassName}>
 				start
 			</Link>

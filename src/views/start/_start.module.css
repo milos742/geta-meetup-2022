@@ -52,6 +52,7 @@ button.selected:hover {
 
 .avatarWrapper {
 	display: flex;
+	flex-wrap: wrap;
 	padding: 20px 0;
 }
 

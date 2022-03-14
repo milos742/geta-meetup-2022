@@ -1,7 +1,8 @@
 .avatar {
     width: 50px;
     text-align: center;
-    margin-right: 10px;
+    margin: 0 15px 15px 0;
+    position: relative;
 }
 
 .avatar:last-child {
@@ -15,4 +16,15 @@ img {
 
 p {
     margin: 0;
+}
+
+.avatarRemoveBtn {
+    min-width: 30px;
+    min-height: 30px;
+    padding: 0;
+    transform: rotate(45deg);
+    font-size: 25px;
+    position: absolute;
+    right: -12px;
+    top: -12px;
 }
