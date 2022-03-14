@@ -1,0 +1,9 @@
+
+.board {
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.boardBtn {
+	margin: 0 7px 7px;
+}

@@ -1,11 +1,15 @@
 .input {
 	width: 100%;
 	min-height: 50px;
-	padding: 5px;
+	padding: 5px 10px 5px 10px;
 	border: none;
 	border-radius: 25px;
 }
-
+.label {
+	display: block;
+	margin-bottom: 10px;
+	color: var(--light);
+}
 .label_text {
 	color: var(--light);
 	display: block;

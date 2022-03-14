@@ -1,7 +1,63 @@
-.playerScore {
-    border: 1px solid var(--secondary-color);
+.playerTable {
+	border: 1px solid var(--secondary-color);
+	margin-bottom: 10px;
+	align-items: center;
 }
 
-.player {
-    margin: 5px;
+.playerTable:not(.active) {
+	/* opacity: 0.7; */
+}
+
+.playerTable .player {
+	margin: 5px;
+}
+
+.hits {
+	width: calc(100% - 120px);
+}
+
+.hit {
+	width: 33.33%;
+	text-align: center;
+}
+
+.hit span:nth-child(1),
+.hit span:nth-child(2) {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50%;
+	padding: 10px;
+}
+
+.hit span:nth-child(1) {
+	background-color: var(--primary-color);
+}
+
+.hit span:nth-child(2) {
+	background-color: var(--secondary-color);
+	color: var(--primary-color);
+    font-size: var(--medium);
+    font-weight: bold;
+}
+
+.hit span:nth-child(1) img {
+    height: 50px;
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+}
+
+.totalScore {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50px;
+	height: 50px;
+	margin-right: 5px;
+	margin-left: 3px;
+	background-color: var(--secondary-color);
+	border-radius: 25px;
+	color: var(--primary-color);
+    font-weight: bold;
 }

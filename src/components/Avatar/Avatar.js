@@ -1,22 +1,24 @@
 import avatarWinner from "../../assets/icons/avatar--big.svg";
 import avatar from "../../assets/icons/avatar.svg";
 import { Button } from "../Button/Button";
+
 import style from "./_avatar.module.css";
+import classNames from "classnames";
 
-export function Avatar({label, winner = false, onClick}) {
-
+export function Avatar({ label, winner = false, onClick, className }) {
+	className = classNames(style.avatar, className);
 	return (
-		<div className={style.avatar}>
-			<img src={winner ? avatarWinner : avatar} alt='avatar' />
+		<div className={className}>
+			<img src={winner ? avatarWinner : avatar} alt="avatar" />
 			<p>{label}</p>
-			{onClick && 
+			{onClick && (
 				<Button
 					onClick={onClick}
-					className={style.avatarRemoveBtn}
-					type="remove">
-				+
+					className={style.removeBtn}
+					theme="remove">
+					+
 				</Button>
-			}
+			)}
 		</div>
 	);
 }

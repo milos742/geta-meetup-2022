@@ -1,0 +1,28 @@
+.btnAddPlayer {
+	height: 50px;
+}
+
+.inputWrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin-bottom: 10px;
+}
+.inputWrapper input {
+	width: calc(100% - 70px);
+}
+
+.avatarWrapper {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 20px 0;
+}
+
+.avatarItem {
+	min-width: 25%;
+}
+
+.btnAddPlayer {
+	height: 50px;
+}
