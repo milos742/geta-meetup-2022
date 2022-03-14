@@ -6,7 +6,6 @@ import style from "./_playerScore.module.css"
 
 export function PlayerScore({ hit, currentScore, player, ...rest }) {
 	const hits = [14, 16, 22];
-	console.log(player);
 	return (
 		<Row className={style.playerTable}>
 			<Avatar label={player.name} className={style.player} />
@@ -22,7 +21,7 @@ export function PlayerScore({ hit, currentScore, player, ...rest }) {
 			</Row>
 			<div className={style.totalScore}>
 				<span>
-					301
+					{player.score}
 					{/* {currentScore} */}
 				</span>
 			</div>

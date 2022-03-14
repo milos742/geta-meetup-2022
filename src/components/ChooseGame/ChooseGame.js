@@ -16,7 +16,7 @@ export function ChooseGame() {
     const handleSetGame = (game) => {
 		if (game !== gameState.selectedGame) {
 			dispatch({
-				type: "SET_GAME",
+				type: "SELECT_GAME",
 				payload: game,
 			});
 		}

@@ -1,4 +1,7 @@
+import { act } from "react-dom/test-utils";
 import { v4 as uuidv4 } from "uuid";
+
+const deepCopy = (data) => JSON.parse(JSON.stringify(data))
 
 export const gameReducer = (state, action) => {
 	switch (action.type) {
@@ -22,16 +25,24 @@ export const gameReducer = (state, action) => {
 		case "REMOVE_PLAYER":
 			delete state.players[action.payload];
 			return { ...state };
-		case "SET_GAME":
+		case "SELECT_GAME":
 			return {
 				...state,
 				selectedGame: action.payload,
 			};
-		case "SET_ORDER":
-			return {
-                ...state,
-                playerOrder: action.payload
-            };
+		case "INIT_GAME":
+			const stateCopy = deepCopy(state);
+
+			stateCopy.playerOrder = Object.values(state.players).map(
+				(player) => player.id
+			);
+
+			stateCopy.activePlayerId = stateCopy.playerOrder[0];
+
+			Object.keys(stateCopy.players).forEach((key) => {
+				stateCopy.players[key].score = stateCopy.selectedGame
+			});
+			return stateCopy;
 		default:
 			return state;
 	}

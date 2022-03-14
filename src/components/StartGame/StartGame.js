@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
 import style from "./_startGame.module.css";
 import classNames from "classnames";
+import { Button } from "../Button/Button";
 
 import {
 	useGameContext,
@@ -18,20 +19,17 @@ export function StartGame() {
 	const linkClassName = classNames(style.link, {
 		[style.linkDisabled]: !isLinkDisabled,
 	});
-
-	const handleSetOrder = () => {
-		let playerOrder = Object.values(gameState.players).map(
-			(player) => player.id
-		);
+    let history = useNavigate ();
+	const handleSetGame = () => {
 		dispatch({
-			type: "SET_ORDER",
-			payload: playerOrder,
+			type: "INIT_GAME",
 		});
+        history("/game");
 	};
 
 	return (
-		<Link to={`/game`} className={linkClassName} onClick={handleSetOrder}>
+		<Button className={linkClassName} onClick={handleSetGame}>
 			start
-		</Link>
+		</Button>
 	);
 }
