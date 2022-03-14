@@ -24,10 +24,10 @@ export function Start() {
 
 	const [inputVal, setInputVal] = useState('');
 
-	const isLinkDisabled = Object.values(gameState.players).length <= 1 && !gameState.selectedGame
+	const isLinkDisabled = Object.values(gameState.players).length >= 2 && !!gameState.selectedGame;
 	
 	const linkClassName = classNames(style.link,
-		{[style.linkDisabled] : isLinkDisabled });
+		{[style.linkDisabled] : !isLinkDisabled });
 
 	const handlePlayerAdd = (event) => {
 		event.preventDefault();
@@ -55,7 +55,6 @@ export function Start() {
 		}
 	}
 
-
 	return (
 		<div className={style.start}>
 			<Logo />
@@ -70,24 +69,29 @@ export function Start() {
 				/>
 
 				<Button 
-				disabled={!inputVal}
-				className={style.btnAddPlayer} onClick={handlePlayerAdd}>
+					disabled={!inputVal}
+					className={style.btnAddPlayer}
+					onClick={handlePlayerAdd}
+				>
 					+
 				</Button>
 
 			</form>
 
-			<div className={style.avatarWrapper}>
+			<ul className={style.avatarWrapper}>
 				{
 					Object.values(gameState.players).map((player) => (
+						<li>
 						<Avatar
 							key={player.id}
 							label={player.name}
 							onClick={() => handlePlayerRemove(player.id)}
 						/>
+
+						</li>
 					))
 				}
-			</div>
+			</ul>
 
 			<h2>Choose game:</h2>
 			<div className={style.inputWrapper}>
@@ -104,6 +108,7 @@ export function Start() {
 
 			</div>
 
+			{/* <Link to={`/game`} className={linkClassName}> */}
 			<Link to={`/game`} className={linkClassName}>
 				start
 			</Link>

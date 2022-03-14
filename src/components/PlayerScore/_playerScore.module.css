@@ -1,0 +1,7 @@
+.playerScore {
+    border: 1px solid var(--secondary-color);
+}
+
+.player {
+    margin: 5px;
+}

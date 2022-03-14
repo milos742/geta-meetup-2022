@@ -1,9 +1,13 @@
-.game {
-	color: green;
-	max-width: var(--container);
-	margin: 0 auto;
-	padding-left: var(--side-bumper);
-	padding-right: var(--side-bumper);
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.logo {
+	margin-left: 0;
 }
 
 .link {
@@ -22,4 +26,9 @@
 .link:hover {
 	background-color: var(--secondary-color);
 	color: var(--primary-color);
+}
+
+.button {
+	min-width: 100px;
+	margin-left: var(--side-bumper);
 }
