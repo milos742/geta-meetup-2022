@@ -1,9 +1,14 @@
 import logo from "../../assets/geta-logo--white.svg";
 import style from "./_logo.module.css";
 
-export function Logo(props) {
+import classNames from "classnames";
+
+export function Logo({ className, ...rest }) {
+
+	className = classNames(style.logo, className);
+
 	return (
-		<div className={style.logo}>
+		<div className={className} {...rest}>
 			<img src={logo} alt="logo" />
 		</div>
 	);
