@@ -1,22 +1,16 @@
 import { Link } from "react-router-dom";
-import { Header } from "../../components/Header/Header";
-import { PlayerScore } from "../../components/PlayerScore/PlayerScore";
-import { Logo } from "../../components/Logo/Logo";
-import { Board } from "../../components/Board/Board";
 
+import { Board } from "../../components/Board/Board";
+import { useGameContext } from "../../components/GameProvider/GameProvider";
+import { Header } from "../../components/Header/Header";
+import { Logo } from "../../components/Logo/Logo";
+import { PlayerScore } from "../../components/PlayerScore/PlayerScore";
 import style from "./_game.module.css";
 
-import {
-	useGameContext,
-	useGameDispatch,
-} from "../../components/GameProvider/GameProvider";
-
-
 export function Game() {
-	const gameContext = useGameContext();
-	const dispatch = useGameDispatch();
+	const gameState = useGameContext();
 
-	if (!gameContext.selectedGame || gameContext.players.length < 1) {
+	if (!gameState.selectedGame || gameState.players.length < 1) {
 		return (
 			<div className={style.game}>
 				<Logo />
@@ -30,11 +24,13 @@ export function Game() {
 	return (
 		<div className={style.game}>
 			<Header />
-
-			{gameContext.playerOrder?.map((id) => (
-				<PlayerScore key={id} player={gameContext.players[id]} />
+			{gameState.playerOrder?.map((id) => (
+				<PlayerScore 
+					key={id}
+					hits={gameState.historyHits}
+					player={gameState.players[id]}
+				/>
 			))}
-
 			<Board/>
 		</div>
 	);

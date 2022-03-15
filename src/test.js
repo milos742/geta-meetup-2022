@@ -5,17 +5,13 @@ export const data = {
 	activePlayerId: "0",
 
 	players: {
-		"0": { id: 0, name: "Draza", score: 501 },
+		"0": { id: 0, name: "Draza", score: 501, historyHits: [] },
 		"1": { id: 1, name: "Draza", score: 501 },
 		"2": { id: 2, name: "Draza", score: 501 },
 		"3": { id: 3, name: "Draza", score: 501 },
 	},
 
 	historyHits: [
-		{ playerd: "0", hits: [10, 14, 18] },
-		{ playerd: "1", hits: [10, 14, 18] },
-		{ playerd: "2", hits: [10, 14, 18] },
-		{ playerd: "3", hits: [10, 14, 18] },
 		{ playerd: "0", hits: [10, 14, 18] },
 		{ playerd: "1", hits: [10, 14, 18] },
 		{ playerd: "2", hits: [10, 14, 18] },

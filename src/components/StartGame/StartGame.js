@@ -1,16 +1,17 @@
-import { useNavigate  } from "react-router-dom";
-import style from "./_startGame.module.css";
 import classNames from "classnames";
-import { Button } from "../Button/Button";
+import { useNavigate } from "react-router-dom";
 
 import {
 	useGameContext,
 	useGameDispatch,
 } from "../../components/GameProvider/GameProvider";
+import { Button } from "../Button/Button";
+import style from "./_startGame.module.css";
 
 export function StartGame() {
 	const dispatch = useGameDispatch();
 	const gameState = useGameContext();
+    const history = useNavigate ();
 
 	const isLinkDisabled =
 		Object.values(gameState.players).length >= 2 &&
@@ -19,7 +20,7 @@ export function StartGame() {
 	const linkClassName = classNames(style.link, {
 		[style.linkDisabled]: !isLinkDisabled,
 	});
-    let history = useNavigate ();
+
 	const handleSetGame = () => {
 		dispatch({
 			type: "INIT_GAME",

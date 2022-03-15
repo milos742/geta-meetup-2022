@@ -1,4 +1,9 @@
-import {createContext, useReducer, useContext} from "react";
+import {
+	createContext,
+	useContext,
+	useReducer,
+} from "react";
+
 import { gameReducer } from "./gameReducer";
 
 const GameProviderContext = createContext(undefined);
@@ -9,7 +14,7 @@ const defaultGameState = {
 	selectedGame: null,
 	activePlayerId: "",
 	players: {},
-	historyHits: [],
+    historyHits: [],
 	playerOrder: []
 }
 
