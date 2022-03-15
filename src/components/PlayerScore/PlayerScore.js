@@ -7,10 +7,12 @@ import style from "./_playerScore.module.css";
 export function PlayerScore({ hits, player }) {
 	
 	const gameState = useGameContext();
+	// console.log(hits, player)
 	return (
 		<Row className={gameState.activePlayerId === player.id ? style.active : style.playerTable}>
 			<Avatar label={player.name} className={style.player} />
 			<div className={style.hitsWrapper}>
+
 				<div className={style.hitsRow}>
 					<div className={style.hit}>
 						<img src={dart} alt=""/>
@@ -22,20 +24,21 @@ export function PlayerScore({ hits, player }) {
 						<img src={dart} alt=""/>
 					</div>
 				</div>
+
 				<div className={style.hitsRow}>
-					{hits && gameState.activePlayerId === player.id && hits.map((hit,i) => (
+					{hits.map((hit,i) => (
 						<div key={i} className={style.hit}>
 							{hit}
 						</div>
 					))}
 				</div>
 			</div>
+
 			<div className={style.totalScore}>
 				<span>
 					{player.score}
 				</span>
 			</div>
-			
 		</Row>
 	);
 }

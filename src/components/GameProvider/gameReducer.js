@@ -1,13 +1,13 @@
 import { v4 as uuidv4 } from "uuid";
-
-const deepCopy = (data) => JSON.parse(JSON.stringify(data))
+import { deepCopy } from "./helpers/deepCopy";
+import { addHit } from "./helpers/addHit";
 
 export const gameReducer = (state, action) => {
 	switch (action.type) {
 		case "ADD_PLAYER":
 			const player = {
 				id: uuidv4(),
-				name: action.payload
+				name: action.payload,
 			};
 			return {
 				...state,
@@ -28,33 +28,83 @@ export const gameReducer = (state, action) => {
 			const stateCopy = deepCopy(state);
 
 			stateCopy.playerOrder = Object.values(state.players)
-			.map(player => player.id)
-			.sort(() =>  0.5 - Math.random());
+				.map((player) => player.id)
+				.sort(() => 0.5 - Math.random());
 
 			stateCopy.activePlayerId = stateCopy.playerOrder[0];
 
 			Object.keys(stateCopy.players).forEach((key) => {
-				stateCopy.players[key].score = stateCopy.selectedGame
+				stateCopy.players[key].score = stateCopy.selectedGame;
 			});
+
+			stateCopy.historyHits = [
+				{ playerId: stateCopy.activePlayerId, hits: [] },
+			];
 
 			return stateCopy;
 		case "ADD_HIT":
-			console.log(state.playerOrder.length)
-			console.log(state.historyHits.length)
+		
+			return addHit(state, action);
+			
+			// const stateCopyHistoryHits = deepCopy(state.historyHits);
 
-			if(state.historyHits.length === 2) {
-				state.activePlayerId = state.playerOrder[1]
-				console.log('moze drugi igrac')
-			}
+			// stateCopyHistoryHits[stateCopyHistoryHits.length - 1].hits.push(
+			// 	action.payload
+			// );
+
+			// return {
+			// 	...state,
+			// 	historyHits: [...stateCopyHistoryHits],
+			// };
+		case "REMOVE_HIT":
+			const copyStateHistory = deepCopy(state.historyHits);
+			copyStateHistory[copyStateHistory.length - 1].hits.pop();
+
 			return {
 				...state,
-				historyHits: [...state.historyHits, action.payload]
+				historyHits: [...copyStateHistory],
 			};
-		case "REMOVE_HIT":
+		case "NEXT_PLAYER":
+			let nextPlayerIndex =
+				state.playerOrder.findIndex((id) => {
+					return id === state.activePlayerId;
+				}) + 1;
+
+			if (nextPlayerIndex > state.playerOrder.length - 1) {
+				nextPlayerIndex = 0;
+			}
+
 			return {
-				...state, 
-				historyHits: state.historyHits.filter( (_,i) => 
-					i !== state.historyHits.length-1)
+				...state,
+				historyHits: [
+					...state.historyHits,
+					{
+						playerId: state.playerOrder[nextPlayerIndex],
+						hits: [],
+					},
+				],
+				activePlayerId: state.playerOrder[nextPlayerIndex],
+			};
+		case "PREV_PLAYER":
+			let prevPlayerIndex =
+				state.playerOrder.findIndex((id) => {
+					return id === state.activePlayerId;
+				}) - 1;
+
+			if (prevPlayerIndex < 0) {
+				prevPlayerIndex = state.playerOrder.length - 1;
+			}
+
+			let historyHits = [...state.historyHits];
+
+			if(historyHits[historyHits.length - 1].hits <= 0) {
+				historyHits.pop();
+			}
+
+			return {
+				...state,
+				historyHits: [...historyHits],
+				activePlayerId: state.playerOrder[prevPlayerIndex],
 			};
 		default:
 			return state;

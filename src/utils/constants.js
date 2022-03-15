@@ -3,7 +3,6 @@ export const games = {
 	501: "501",
 };
 
-
 export const targets = [
     ...Array.from({length:20}).map((_, idx) => idx + 1),
     25,

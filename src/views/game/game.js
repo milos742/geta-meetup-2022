@@ -21,17 +21,28 @@ export function Game() {
 		);
 	}
 
+	const rounds = gameState.historyHits.filter((p) => {
+		return p.playerId === gameState.historyHits[0].playerId;
+	});
+
 	return (
 		<div className={style.game}>
 			<Header />
-			{gameState.playerOrder?.map((id) => (
-				<PlayerScore 
-					key={id}
-					hits={gameState.historyHits}
-					player={gameState.players[id]}
-				/>
-			))}
-			<Board/>
+			<span>Round: {rounds.length}</span>
+			{gameState.playerOrder.map((id) => {
+				let history = [...gameState.historyHits]
+					.reverse()
+					.find((el) => el.playerId === id);
+
+				return (
+					<PlayerScore
+						key={id}
+						hits={history ? history.hits : []}
+						player={gameState.players[id]}
+					/>
+				);
+			})}
+			<Board />
 		</div>
 	);
 }

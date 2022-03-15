@@ -11,6 +11,7 @@ import style from "./_startGame.module.css";
 export function StartGame() {
 	const dispatch = useGameDispatch();
 	const gameState = useGameContext();
+	
     const history = useNavigate ();
 
 	const isLinkDisabled =

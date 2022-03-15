@@ -14,7 +14,10 @@ const defaultGameState = {
 	selectedGame: null,
 	activePlayerId: "",
 	players: {},
-    historyHits: [],
+    historyHits: [
+        // {id: "eb8345eb-faa7-4225-adc7-fd390eb99c82", hits: [12,60, 11]},
+        // {id: "bd40bcd7-c07d-465f-a0dc-9be341ab064b", hits: [14,20, 17]},
+    ],
 	playerOrder: []
 }
 
