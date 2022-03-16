@@ -4,11 +4,14 @@ import { ChooseGame } from "../../components/ChooseGame/ChooseGame";
 import { StartGame } from "../../components/StartGame/StartGame";
 
 import style from "./_start.module.css";
+import { Row } from "../../components/Row/Row";
 
 export function Start() {
 	return (
 		<div className={style.start}>
-			<Logo />
+			<Row className={style.row}>
+				<Logo />
+			</Row>
 			<AddPlayer />
 			<ChooseGame />
 			<StartGame />

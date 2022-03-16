@@ -10,10 +10,10 @@ import style from "./_choseGame.module.css";
 
 export function ChooseGame() {
 
-    const dispatch = useGameDispatch();
+	const dispatch = useGameDispatch();
 	const gameState = useGameContext();
 
-    const handleSetGame = (game) => {
+	const handleSetGame = (game) => {
 		if (game !== gameState.selectedGame) {
 			dispatch({
 				type: "SELECT_GAME",
@@ -22,9 +22,9 @@ export function ChooseGame() {
 		}
 	};
 
-    return (
-        <>
-            <h2>Choose game:</h2>
+	return (
+		<>
+			<h2>Choose game:</h2>
 			<div className={style.inputWrapper}>
 				{Object.values(games).map((g) => (
 					<Button
@@ -37,6 +37,6 @@ export function ChooseGame() {
 					</Button>
 				))}
 			</div>
-        </>
-    )
+		</>
+	)
 }

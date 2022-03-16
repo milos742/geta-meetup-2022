@@ -12,3 +12,7 @@
 	text-transform: uppercase;
 }
 
+.row {
+	padding-top: var(--side-bumper);
+}
+
