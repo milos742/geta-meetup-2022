@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { deepCopy } from "./helpers/deepCopy";
 import { addHit } from "./helpers/addHit";
+import { removeHit } from "./helpers/removeHit";
 
 export const gameReducer = (state, action) => {
 	switch (action.type) {
@@ -43,48 +44,48 @@ export const gameReducer = (state, action) => {
 
 			return stateCopy;
 		case "ADD_HIT":
-		
 			return addHit(state, action);
-			
-			// const stateCopyHistoryHits = deepCopy(state.historyHits);
 
-			// stateCopyHistoryHits[stateCopyHistoryHits.length - 1].hits.push(
-			// 	action.payload
-			// );
+		// const stateCopyHistoryHits = deepCopy(state.historyHits);
 
-			// return {
-			// 	...state,
-			// 	historyHits: [...stateCopyHistoryHits],
-			// };
+		// stateCopyHistoryHits[stateCopyHistoryHits.length - 1].hits.push(
+		// 	action.payload
+		// );
+
+		// return {
+		// 	...state,
+		// 	historyHits: [...stateCopyHistoryHits],
+		// };
 		case "REMOVE_HIT":
-			const copyStateHistory = deepCopy(state.historyHits);
-			copyStateHistory[copyStateHistory.length - 1].hits.pop();
+			return removeHit(state, action);
+		// const copyStateHistory = deepCopy(state.historyHits);
+		// copyStateHistory[copyStateHistory.length - 1].hits.pop();
 
-			return {
-				...state,
-				historyHits: [...copyStateHistory],
-			};
-		case "NEXT_PLAYER":
-			let nextPlayerIndex =
-				state.playerOrder.findIndex((id) => {
-					return id === state.activePlayerId;
-				}) + 1;
+		// return {
+		// 	...state,
+		// 	historyHits: [...copyStateHistory],
+		// };
+		// case "NEXT_PLAYER":
+		// 	let nextPlayerIndex =
+		// 		state.playerOrder.findIndex((id) => {
+		// 			return id === state.activePlayerId;
+		// 		}) + 1;
 
-			if (nextPlayerIndex > state.playerOrder.length - 1) {
-				nextPlayerIndex = 0;
-			}
+		// 	if (nextPlayerIndex > state.playerOrder.length - 1) {
+		// 		nextPlayerIndex = 0;
+		// 	}
 
-			return {
-				...state,
-				historyHits: [
-					...state.historyHits,
-					{
-						playerId: state.playerOrder[nextPlayerIndex],
-						hits: [],
-					},
-				],
-				activePlayerId: state.playerOrder[nextPlayerIndex],
-			};
+		// 	return {
+		// 		...state,
+		// 		historyHits: [
+		// 			...state.historyHits,
+		// 			{
+		// 				playerId: state.playerOrder[nextPlayerIndex],
+		// 				hits: [],
+		// 			},
+		// 		],
+		// 		activePlayerId: state.playerOrder[nextPlayerIndex],
+		// 	};
 		case "PREV_PLAYER":
 			let prevPlayerIndex =
 				state.playerOrder.findIndex((id) => {
@@ -97,7 +98,7 @@ export const gameReducer = (state, action) => {
 
 			let historyHits = [...state.historyHits];
 
-			if(historyHits[historyHits.length - 1].hits <= 0) {
+			if (historyHits[historyHits.length - 1].hits <= 0) {
 				historyHits.pop();
 			}
 

@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-
 import { Board } from "../../components/Board/Board";
 import { useGameContext } from "../../components/GameProvider/GameProvider";
 import { Header } from "../../components/Header/Header";
 import { Logo } from "../../components/Logo/Logo";
 import { PlayerScore } from "../../components/PlayerScore/PlayerScore";
+
 import style from "./_game.module.css";
 
 export function Game() {

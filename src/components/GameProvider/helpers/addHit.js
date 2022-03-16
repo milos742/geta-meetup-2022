@@ -3,7 +3,9 @@ import { deepCopy } from "./deepCopy";
 export function addHit(state, action) {
 	const stateCopy = deepCopy(state);
 
-	stateCopy.historyHits[stateCopy.historyHits.length - 1].hits.push(action.payload);
+	stateCopy.historyHits[stateCopy.historyHits.length - 1].hits.push(
+		action.payload
+	);
 
 	const hitsCount =
 		stateCopy.historyHits[stateCopy.historyHits.length - 1].hits.length;

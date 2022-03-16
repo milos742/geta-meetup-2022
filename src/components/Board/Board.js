@@ -26,17 +26,9 @@ export function Board() {
 	};
 
 	const removeHitValue = () => {
-		if (historyHitsLength > 0) {
-			dispatch({
-				type: "REMOVE_HIT",
-			});
-		}
-
-		if (historyHitsLength === 0) {
-			dispatch({
-				type: "PREV_PLAYER",
-			});
-		}
+		dispatch({
+			type: "REMOVE_HIT",
+		});
 	};
 
 	return (
