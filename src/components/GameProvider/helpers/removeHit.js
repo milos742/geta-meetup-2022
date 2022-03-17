@@ -1,50 +1,35 @@
 import { deepCopy } from "./deepCopy";
+import { setScore } from "./setScore";
 
 export function removeHit(state, action) {
 	const stateCopy = deepCopy(state);
-
-	// We are popping last hit from the last obj in history array on each DEL btn click
-	stateCopy.historyHits[stateCopy.historyHits.length - 1].hits.pop();
+	let currPlayerScore = stateCopy.players[stateCopy.activePlayerId].score;
 
 	// We are catching how much hits is left in hits
-	const hitsCount =
-		stateCopy.historyHits[stateCopy.historyHits.length - 1].hits.length;
+	const hitsCount = stateCopy.historyHits[stateCopy.historyHits.length - 1].hits.length;
 
 	if (hitsCount === 0) {
+		const currPlayerIndex = state.playerOrder.findIndex((id) => id === stateCopy.activePlayerId);
 
-		// Get current player index
-		const currPlayerIndex = state.playerOrder.findIndex(
-			(id) => id === stateCopy.activePlayerId
-		);
-		
 		// Set prev index
-		let prevPlayerIndex =
-			currPlayerIndex <= 0
-				? stateCopy.playerOrder.length - 1
-				: currPlayerIndex - 1;
+		let prevPlayerIndex = currPlayerIndex <= 0 ? stateCopy.playerOrder.length - 1 : currPlayerIndex - 1;
 
-		const prevPlayerID = stateCopy.playerOrder[prevPlayerIndex];
+		stateCopy.activePlayerId = stateCopy.playerOrder[prevPlayerIndex];
 
-		// Pop last hit from newly selected history object if it exists
-		if (
-			stateCopy.historyHits[stateCopy.historyHits.length - 2] !==
-			undefined
-		) {
-			stateCopy.historyHits[stateCopy.historyHits.length - 2].hits.pop();
-		}
-
-		// Pop history object from array if it is not first one
-		if (
-			stateCopy.historyHits[0] !==
-			stateCopy.historyHits[stateCopy.historyHits.length - 1]
-		) {
-			stateCopy.activePlayerId = prevPlayerID;
+		if (stateCopy.historyHits.length > 1) {
 			stateCopy.historyHits.pop();
 		}
 
-		// Set state
-		stateCopy.historyHits = [...stateCopy.historyHits];
+		// Set history flag
+		stateCopy.historyHits[stateCopy.historyHits.length - 1].isOverflowed = false;
 	}
+
+	const currRoundHits = stateCopy.historyHits[stateCopy.historyHits.length - 1].hits;
+
+	currRoundHits.pop();
+
+	currPlayerScore = setScore(stateCopy);
+	stateCopy.players[stateCopy.activePlayerId].score = currPlayerScore;
 
 	return stateCopy;
 }

@@ -21,7 +21,7 @@ const defaultGameState = {
 export const useGameContext = () => {
 	const context = useContext(GameProviderContext);
 
-	if (!context) {
+	if (context === undefined) {
 		return new Error(
 			"useGameContext must be used inside GameProviderContext"
 		);
@@ -38,7 +38,7 @@ export const useGameContext = () => {
 export const useGameDispatch = () => {
 	const context = useContext(GameProviderDispatch);
 
-	if (!context) {
+	if (context === undefined) {
 		return new Error(
 			"useGameDispatch must be used inside GameProviderDispatch"
 		);

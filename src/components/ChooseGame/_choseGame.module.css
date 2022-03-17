@@ -13,7 +13,6 @@
 	padding: 10px 20px;
 }
 
-
 button.selected,
 button.selected:hover {
 	background-color: var(--primary-color);

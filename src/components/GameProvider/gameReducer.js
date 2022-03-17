@@ -33,9 +33,10 @@ export const gameReducer = (state, action) => {
 				.sort(() => 0.5 - Math.random());
 
 			stateCopy.activePlayerId = stateCopy.playerOrder[0];
+				
 
 			Object.keys(stateCopy.players).forEach((key) => {
-				stateCopy.players[key].score = stateCopy.selectedGame;
+				stateCopy.players[key].score = Number(stateCopy.selectedGame);
 			});
 
 			stateCopy.historyHits = [
