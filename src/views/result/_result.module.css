@@ -1,3 +1,42 @@
 .result {
-	color: blue;
+	max-width: var(--container);
+	margin: 0 auto;
+	padding-left: var(--side-bumper);
+	padding-right: var(--side-bumper);
+}
+
+.row {
+	margin-top: var(--side-bumper);
+	margin-bottom: var(--side-bumper);
+}
+
+.avatarWrapper {
+	text-align: center;
+}
+
+.avatarWrapper li {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+
+.avatarWrapper li span {
+	display: block;
+	margin-right: 10px;
+}
+
+.newGame {
+	margin-top: 20px;
+	width: 100%;
+	font-weight: bold;
+	background-color: var(--secondary-color);
+	color: var(--primary-color);
+}
+
+.newGame:hover {
+	background-color: var(--primary-color);
+	color: var(--secondary-color);
 }

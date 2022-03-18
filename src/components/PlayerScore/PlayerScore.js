@@ -14,13 +14,13 @@ export function PlayerScore({ hits, player }) {
 			<div className={style.hitsWrapper}>
 
 				<div className={style.hitsRow}>
-					<div className={style.hit}>
+					<div className={style.arrow}>
 						<img src={dart} alt=""/>
 					</div>
-					<div className={style.hit}>
+					<div className={style.arrow}>
 						<img src={dart} alt=""/>
 					</div>
-					<div className={style.hit}>
+					<div className={style.arrow}>
 						<img src={dart} alt=""/>
 					</div>
 				</div>

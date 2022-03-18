@@ -1,3 +1,5 @@
+import { getSubstringHit } from "./substringHit";
+
 export const setScore = (stateCopy) => {
 	let newScore = Number(stateCopy.selectedGame);
 
@@ -5,10 +7,9 @@ export const setScore = (stateCopy) => {
 		.filter((p) => p.playerId === stateCopy.activePlayerId && !p.isOverflowed)
 		.forEach((hh) => {
 			hh.hits.forEach((hit) => {
-				newScore -= hit;
+				newScore -= getSubstringHit(hit);
 			});
 		});
-
 
 	return newScore;
 };

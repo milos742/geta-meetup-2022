@@ -5,12 +5,13 @@ import { gameReducer } from "./gameReducer";
 const GameProviderContext = createContext(undefined);
 const GameProviderDispatch = createContext(undefined);
 
-const defaultGameState = {
+export const defaultGameState = {
 	selectedGame: null,
 	activePlayerId: "",
 	players: {},
 	historyHits: [],
 	playerOrder: [],
+	winner: {}
 };
 
 /**
