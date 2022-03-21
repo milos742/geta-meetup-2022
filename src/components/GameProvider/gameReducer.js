@@ -3,6 +3,7 @@ import { deepCopy } from "./helpers/deepCopy";
 import { addHit } from "./helpers/addHit";
 import { removeHit } from "./helpers/removeHit";
 import { defaultGameState } from "./GameProvider";
+
 export const gameReducer = (state, action) => {
 	switch (action.type) {
 		case "ADD_PLAYER":
@@ -51,12 +52,6 @@ export const gameReducer = (state, action) => {
 		case "REMOVE_HIT":
 			return removeHit(state, action);
 			
-		case "SET_WINNER":
-			return {
-				...state,
-				winner: action.payload,
-			};
-
 		case "RESET_GAME":
 			return {
 				...defaultGameState,

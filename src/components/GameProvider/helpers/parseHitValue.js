@@ -7,7 +7,6 @@
  * @returns 
  */
 export const parseHitValue = (hit) => {
-
 	switch(hit.charAt(0)) {
 		case "D":
 			return Number(hit.substring(1) * 2);

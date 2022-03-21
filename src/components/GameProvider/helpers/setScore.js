@@ -1,4 +1,4 @@
-import { parseHitValue } from "./substringHit";
+import { parseHitValue } from "./parseHitValue";
 
 export const setScore = (stateCopy) => {
 	let newScore = Number(stateCopy.selectedGame);

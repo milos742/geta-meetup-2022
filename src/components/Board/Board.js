@@ -37,6 +37,7 @@ export function Board() {
 		dispatch({
 			type: "REMOVE_HIT",
 		});
+		setMultiplier("");
 	};
 
 	const handleSetMultiplier = (value) => {
@@ -50,25 +51,18 @@ export function Board() {
 	useEffect(() => {
 		//@TODO Check if winning throw and set winner
 		//@DONE
-		if (gameState.players[gameState.activePlayerId].score === 0) {
-			dispatch({
-				type: "SET_WINNER",
-				payload: gameState.players[gameState.activePlayerId],
-			});
-
-			//@TODO check if there is unnecesary re-renders
-			//@DONE - We dont have to use MEMO because theese are not expensive computations
+		if (gameState.winner.id) {
 			history("/result");
 		}
-	}, [gameState.activePlayerId, gameState.players, dispatch, history]);
+	}, [gameState.winner, history]);
 
 	return (
 		<Row className={style.board}>
 			{targets.map((value) => (
 				<Button
 					key={value}
-					className={style.boardBtn}
 					theme="secondary"
+					className={style.boardBtn}
 					onClick={() => addHitValue(value)}
 					disabled={isNumberDisabled(value)}>
 					{value}
@@ -77,9 +71,10 @@ export function Board() {
 
 			{["D", "T"].map((m) => (
 				<Button
-				className={classNames(style.boardBtn, multiplier === m && style.active)}
+					key={m}
+					theme="secondary"
 					onClick={() => handleSetMultiplier(m)}
-					theme="secondary">
+					className={classNames(style.boardBtn, multiplier === m && style.active)}>
 					{m}
 				</Button>
 			))}

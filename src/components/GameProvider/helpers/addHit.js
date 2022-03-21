@@ -1,6 +1,6 @@
 import { deepCopy } from "./deepCopy";
 import { setScore } from "./setScore";
-import { parseHitValue } from "./substringHit";
+import { parseHitValue } from "./parseHitValue";
 
 export function addHit(state, action) {
 	const stateCopy = deepCopy(state);
@@ -28,6 +28,11 @@ export function addHit(state, action) {
 	stateCopy.players[stateCopy.activePlayerId].score = setScore(stateCopy);
 
 	const hitsCount = currPlayerHits.length;
+
+	//@TODO set winner
+	if (stateCopy.players[stateCopy.activePlayerId].score === 0) {
+		stateCopy.winner = stateCopy.players[stateCopy.activePlayerId];
+	}
 
 	// Shift to new player history object
 	if (hitsCount === 3 || lastHistoryItem.isOverflowed) {
