@@ -1,8 +1,8 @@
 .start {
-	max-width: var(--container);
+	/* max-width: var(--container);
 	margin: 0 auto;
 	padding-left: var(--side-bumper);
-	padding-right: var(--side-bumper);
+	padding-right: var(--side-bumper); */
 }
 
 .start h1 {

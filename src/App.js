@@ -7,6 +7,7 @@ import {
 	Routes,
 } from "react-router-dom";
 
+import style from "./_app.module.css";
 import { GameProvider } from "./components/GameProvider/GameProvider";
 import { Game } from "./views/game/game";
 import { Result } from "./views/result/result";
@@ -14,7 +15,7 @@ import { Start } from "./views/start/start";
 
 function App() {
 	return (
-		<div className="App">
+		<div className={style.app}>
 			<GameProvider>
 				<BrowserRouter>
 					<Routes>
