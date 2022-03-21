@@ -27,8 +27,6 @@ export function addHit(state, action) {
 	currPlayerScore = setScore(stateCopy);
 	stateCopy.players[stateCopy.activePlayerId].score = currPlayerScore;
 
-
-
 	const hitsCount = stateCopy.historyHits[stateCopy.historyHits.length - 1].hits.length;
 
 	// Shift to new player history object

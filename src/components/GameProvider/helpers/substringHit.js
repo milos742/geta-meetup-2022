@@ -12,6 +12,7 @@ export const getSubstringHit = (hit) => {
 
 	if (hit.charAt(0) === "D") {
 		let removeChar = hit.substring(1);
+		console.log(removeChar)
 		calculatedValue = Number(removeChar * 2);
 	} else if (hit.charAt(0) === "T") {
 		let removeChar = hit.substring(1);

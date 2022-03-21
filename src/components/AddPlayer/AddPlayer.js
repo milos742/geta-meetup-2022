@@ -52,6 +52,7 @@ export function AddPlayer() {
 					// ref={inputRef}
 					value={inputVal}
 					onChange={(e) => setInputVal(e.target.value)}
+					maxLength="7"
 				/>
 
 				<Button
@@ -62,15 +63,15 @@ export function AddPlayer() {
 				</Button>
 			</form>
 
-			<PlayerListMemo players={gameState.players} onRemove={handlePlayerRemove} />
+			{/* <PlayerListMemo players={gameState.players} onRemove={handlePlayerRemove} /> */}
 
-			{/* <ul className={style.avatarWrapper}>
+			<ul className={style.avatarWrapper}>
 				{Object.values(gameState.players).map((player) => (
 					<li key={player.id} className={style.avatarItem}>
 						<Avatar label={player.name} onClick={() => handlePlayerRemove(player.id)} />
 					</li>
 				))}
-			</ul> */}
+			</ul>
 		</>
 	);
 }
