@@ -33,22 +33,30 @@ export function Board() {
 	};
 
 	const removeHitValue = () => {
+		// Remove multiplier if any, before proceed with hit
+		if (multiplier !== "") {
+			setMultiplier("");
+			return;
+		}
+
 		dispatch({
 			type: "REMOVE_HIT",
 		});
 	};
 
-	const handleSetMultiplier = (multiplier) => {
-		setMultiplier(multiplier);
+	const handleSetMultiplier = (value) => {
+		if (value !== multiplier) {
+			setMultiplier(value);
+		}
 	};
 
-	const checkIfTriplle = (value) => {
+	const checkMultiplierIsActive = (value) => {
 		if ((multiplier === "T" && value === 25) || (multiplier !== "" && value === 0)) {
 			return true;
 		}
 	};
 
-	//@QUESTION Is this approach ok to check for the winner?
+	//@CHECK Is this approach ok to check for the winner?
 	useEffect(() => {
 		//@TODO Check if winning throw and set winner
 		//@DONE
@@ -72,20 +80,20 @@ export function Board() {
 					className={style.boardBtn}
 					theme="secondary"
 					onClick={() => addHitValue(value)}
-					disabled={checkIfTriplle(value)}>
+					disabled={checkMultiplierIsActive(value)}>
 					{value}
 				</Button>
 			))}
 
 			<Button
-				className={style.boardBtn}
+				className={`${style.boardBtn} ${multiplier === "D" ? style.active : ""}`}
 				onClick={() => handleSetMultiplier("D")}
 				theme="secondary">
 				D
 			</Button>
 
 			<Button
-				className={style.boardBtn}
+				className={`${style.boardBtn} ${multiplier === "T" ? style.active : ""}`}
 				onClick={() => handleSetMultiplier("T")}
 				theme="secondary">
 				T

@@ -29,6 +29,9 @@
 }
 
 .gameChosen {
-	min-width: 100px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	min-width: 200px;
 	margin-left: var(--side-bumper);
 }

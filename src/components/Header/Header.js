@@ -10,11 +10,18 @@ import style from "./_header.module.css";
 export function Header() {
 	const gameContext = useGameContext();
 
+	const rounds = gameContext.historyHits.filter((p) => {
+		return p.playerId === gameContext.historyHits[0].playerId;
+	});
+
 	return (
 		<Row className={style.header}>
 			<Logo className={style.logo} />
 
-			<div className={style.gameChosen}>{gameContext.selectedGame}</div>
+			<div className={style.gameChosen}>
+				<span> G: {gameContext.selectedGame}</span>
+				<span> Round: {rounds.length}</span>
+			</div>
 
 			<Link to={`/`} className={style.link}>
 				Back
