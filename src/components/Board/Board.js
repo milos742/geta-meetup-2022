@@ -51,10 +51,11 @@ export function Board() {
 	useEffect(() => {
 		//@TODO Check if winning throw and set winner
 		//@DONE
+		console.log("Use effect is starterd ", gameState.winner.id);
 		if (gameState.winner.id) {
 			history("/result");
 		}
-	}, [gameState.winner, history]);
+	}, [gameState.winner.id, history]);
 
 	return (
 		<Row className={style.board}>

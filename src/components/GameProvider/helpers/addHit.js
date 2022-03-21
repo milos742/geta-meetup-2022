@@ -30,8 +30,11 @@ export function addHit(state, action) {
 	const hitsCount = currPlayerHits.length;
 
 	//@TODO set winner
+	//@DONE
 	if (stateCopy.players[stateCopy.activePlayerId].score === 0) {
+		console.log("Winner is set!")
 		stateCopy.winner = stateCopy.players[stateCopy.activePlayerId];
+		return stateCopy;
 	}
 
 	// Shift to new player history object
