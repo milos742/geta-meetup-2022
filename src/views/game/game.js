@@ -4,6 +4,7 @@ import { useGameContext } from "../../components/GameProvider/GameProvider";
 import { Header } from "../../components/Header/Header";
 import { Logo } from "../../components/Logo/Logo";
 import { PlayerScore } from "../../components/PlayerScore/PlayerScore";
+import { Row } from "../../components/Row/Row";
 
 import style from "./_game.module.css";
 
@@ -30,16 +31,16 @@ export function Game() {
 			<Header />
 			<span>Round: {rounds.length}</span>
 			{gameState.playerOrder.map((id) => {
-				let history = [...gameState.historyHits]
-					.reverse()
-					.find((el) => el.playerId === id);
+				let history = [...gameState.historyHits].reverse().find((el) => el.playerId === id);
 
 				return (
-					<PlayerScore
-						key={id}
-						hits={history ? history.hits : []}
-						player={gameState.players[id]}
-					/>
+					<Row key={id}>
+						<PlayerScore
+							
+							hits={history ? history.hits : []}
+							player={gameState.players[id]}
+						/>
+					</Row>
 				);
 			})}
 			<Board />

@@ -9,7 +9,7 @@ export function PlayerScore({ hits, player }) {
 	const gameState = useGameContext();
 	// console.log(hits, player)
 	return (
-		<Row className={gameState.activePlayerId === player.id ? style.active : style.playerTable}>
+		<div className={gameState.activePlayerId === player.id ? style.active : style.playerTable}>
 			<Avatar label={player.name} className={style.player} />
 			<div className={style.hitsWrapper}>
 
@@ -39,6 +39,6 @@ export function PlayerScore({ hits, player }) {
 					{player.score}
 				</span>
 			</div>
-		</Row>
+		</div>
 	);
 }

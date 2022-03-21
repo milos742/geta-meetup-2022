@@ -10,7 +10,7 @@
 	margin-left: 0;
 }
 
-.link {
+.link, .gameChosen  {
 	display: grid;
 	place-items: center;
 	padding: 10px;
@@ -28,7 +28,7 @@
 	color: var(--primary-color);
 }
 
-.button {
+.gameChosen {
 	min-width: 100px;
 	margin-left: var(--side-bumper);
 }

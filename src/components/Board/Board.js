@@ -4,13 +4,13 @@ import { Row } from "../../components/Row/Row";
 import { targets } from "../../utils/constants";
 import { useNavigate } from "react-router-dom";
 
-
 import { useGameContext, useGameDispatch } from "../../components/GameProvider/GameProvider";
 
 import style from "./_board.module.css";
 
 export function Board() {
-	// Local state to hold multiplier
+	//@TODO Local state to hold multiplier
+	//@DONE
 	const [multiplier, setMultiplier] = useState("");
 	const history = useNavigate();
 
@@ -18,9 +18,6 @@ export function Board() {
 	const dispatch = useGameDispatch();
 
 	const isDelButtonDisabled = gameState.historyHits[0].hits.length === 0;
-
-	//@TODO Refactor into two actions not four
-	let historyHitsLength = gameState.historyHits[gameState.historyHits.length - 1].hits.length;
 
 	const addHitValue = (value) => {
 		let mergeValue = multiplier + value;
@@ -31,6 +28,7 @@ export function Board() {
 		});
 
 		//@TODO Test this to check if there is any unnecesary re-renders
+		//@DONE
 		setMultiplier("");
 	};
 
@@ -44,16 +42,24 @@ export function Board() {
 		setMultiplier(multiplier);
 	};
 
-	useEffect(() => {
-		if (gameState.players[gameState.activePlayerId].score === 0) {
-			//@TODO Check if winning throw and set winner
-			console.log("Winner is ", gameState.players[gameState.activePlayerId].score);
+	const checkIfTriplle = (value) => {
+		if ((multiplier === "T" && value === 25) || (multiplier !== "" && value === 0)) {
+			return true;
+		}
+	};
 
+	//@QUESTION Is this approach ok to check for the winner?
+	useEffect(() => {
+		//@TODO Check if winning throw and set winner
+		//@DONE
+		if (gameState.players[gameState.activePlayerId].score === 0) {
 			dispatch({
 				type: "SET_WINNER",
 				payload: gameState.players[gameState.activePlayerId],
 			});
 
+			//@TODO check if there is unnecesary re-renders
+			//@DONE - We dont have to use MEMO because theese are not expensive computations
 			history("/result");
 		}
 	}, [gameState.activePlayerId, gameState.players, dispatch, history]);
@@ -65,7 +71,8 @@ export function Board() {
 					key={value}
 					className={style.boardBtn}
 					theme="secondary"
-					onClick={() => addHitValue(value)}>
+					onClick={() => addHitValue(value)}
+					disabled={checkIfTriplle(value)}>
 					{value}
 				</Button>
 			))}

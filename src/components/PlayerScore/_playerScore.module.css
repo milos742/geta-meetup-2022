@@ -5,8 +5,9 @@
 	display: flex;
 	width: 100%;
 	position: relative;
+	opacity: 0.4;
 }
-
+/* 
 .playerTable::after {
 	content: "";
 	display: block;
@@ -17,7 +18,7 @@
 	left: 0;
 	background-color: rgba(148, 146, 146, 0.5);
 	z-index: 1;
-}
+} */
 
 .active {
 	border: 1px solid var(--secondary-color);
@@ -25,9 +26,11 @@
 	align-items: center;
 	display: flex;
 	width: 100%;
+	position: relative;
+	opacity: 1;
 }
 
-.playerTable .player {
+.player {
 	margin: 5px;
 }
 
@@ -61,6 +64,8 @@
 	justify-content: center;
 	background-color: var(--secondary-color);
 	color: var(--primary-color);
+	font-size: var(--small);
+	font-weight: bold;
 }
 
 .arrow {
