@@ -6,18 +6,14 @@
  * @param {String} hit 
  * @returns 
  */
-export const getSubstringHit = (hit) => {
+export const parseHitValue = (hit) => {
 
-	let calculatedValue = Number(hit);
-
-	if (hit.charAt(0) === "D") {
-		let removeChar = hit.substring(1);
-		console.log(removeChar)
-		calculatedValue = Number(removeChar * 2);
-	} else if (hit.charAt(0) === "T") {
-		let removeChar = hit.substring(1);
-		calculatedValue = Number(removeChar * 3);
+	switch(hit.charAt(0)) {
+		case "D":
+			return Number(hit.substring(1) * 2);
+		case "T":
+			return Number(hit.substring(1) * 3);
+		default:
+			return Number(hit);
 	}
-
-	return calculatedValue;
 };

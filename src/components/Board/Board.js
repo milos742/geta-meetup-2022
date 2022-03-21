@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useGameContext, useGameDispatch } from "../../components/GameProvider/GameProvider";
 
 import style from "./_board.module.css";
+import classNames from "classnames";
 
 export function Board() {
 	//@TODO Local state to hold multiplier
@@ -33,28 +34,17 @@ export function Board() {
 	};
 
 	const removeHitValue = () => {
-		// Remove multiplier if any, before proceed with hit
-		if (multiplier !== "") {
-			setMultiplier("");
-			return;
-		}
-
 		dispatch({
 			type: "REMOVE_HIT",
 		});
 	};
 
 	const handleSetMultiplier = (value) => {
-		if (value !== multiplier) {
-			setMultiplier(value);
-		}
+		setMultiplier(value !== multiplier ? value : "");
 	};
 
-	const checkMultiplierIsActive = (value) => {
-		if ((multiplier === "T" && value === 25) || (multiplier !== "" && value === 0)) {
-			return true;
-		}
-	};
+	const isNumberDisabled = (value) =>
+		(multiplier === "T" && value === 25) || (multiplier !== "" && value === 0);
 
 	//@CHECK Is this approach ok to check for the winner?
 	useEffect(() => {
@@ -80,13 +70,23 @@ export function Board() {
 					className={style.boardBtn}
 					theme="secondary"
 					onClick={() => addHitValue(value)}
-					disabled={checkMultiplierIsActive(value)}>
+					disabled={isNumberDisabled(value)}>
 					{value}
 				</Button>
 			))}
 
-			<Button
-				className={`${style.boardBtn} ${multiplier === "D" ? style.active : ""}`}
+			{["D", "T"].map((m) => (
+				<Button
+				className={classNames(style.boardBtn, multiplier === m && style.active)}
+					onClick={() => handleSetMultiplier(m)}
+					theme="secondary">
+					{m}
+				</Button>
+			))}
+
+			{/* <Button
+				// className={`${style.boardBtn} ${multiplier === "D" ? style.active : ""}`}
+				className={classNames(style.boardBtn, multiplier === "D" && style.active)}
 				onClick={() => handleSetMultiplier("D")}
 				theme="secondary">
 				D
@@ -97,7 +97,7 @@ export function Board() {
 				onClick={() => handleSetMultiplier("T")}
 				theme="secondary">
 				T
-			</Button>
+			</Button> */}
 
 			<Button
 				className={style.boardBtn}
