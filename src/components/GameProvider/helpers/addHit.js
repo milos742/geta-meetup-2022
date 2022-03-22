@@ -1,6 +1,6 @@
 import { deepCopy } from "./deepCopy";
-import { setScore } from "./setScore";
 import { parseHitValue } from "./parseHitValue";
+import { setScore } from "./setScore";
 
 export function addHit(state, action) {
 	const stateCopy = deepCopy(state);
@@ -28,13 +28,14 @@ export function addHit(state, action) {
 	stateCopy.players[stateCopy.activePlayerId].score = setScore(stateCopy);
 
 	const hitsCount = currPlayerHits.length;
+	const lastHit = stateCopy.historyHits[stateCopy.historyHits.length - 1]
+	.hits[stateCopy.historyHits[stateCopy.historyHits.length - 1].hits.length - 1]
 
 	//@TODO set winner
 	//@DONE
-	if (stateCopy.players[stateCopy.activePlayerId].score === 0) {
-		console.log("Winner is set!")
+	
+	if (stateCopy.players[stateCopy.activePlayerId].score === 0 && lastHit.includes('D')) {
 		stateCopy.winner = stateCopy.players[stateCopy.activePlayerId];
-		return stateCopy;
 	}
 
 	// Shift to new player history object

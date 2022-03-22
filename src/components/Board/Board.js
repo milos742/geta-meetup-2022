@@ -1,13 +1,19 @@
-import { useState, useEffect } from "react";
-import { Button } from "../../components/Button/Button";
-import { Row } from "../../components/Row/Row";
-import { targets } from "../../utils/constants";
+import {
+	useEffect,
+	useState,
+} from "react";
+
+import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
 
-import { useGameContext, useGameDispatch } from "../../components/GameProvider/GameProvider";
-
+import { Button } from "../../components/Button/Button";
+import {
+	useGameContext,
+	useGameDispatch,
+} from "../../components/GameProvider/GameProvider";
+import { Row } from "../../components/Row/Row";
+import { targets } from "../../utils/constants";
 import style from "./_board.module.css";
-import classNames from "classnames";
 
 export function Board() {
 	//@TODO Local state to hold multiplier
@@ -51,7 +57,6 @@ export function Board() {
 	useEffect(() => {
 		//@TODO Check if winning throw and set winner
 		//@DONE
-		console.log("Use effect is starterd ", gameState.winner.id);
 		if (gameState.winner.id) {
 			history("/result");
 		}
