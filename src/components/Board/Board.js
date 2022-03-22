@@ -48,10 +48,10 @@ export function Board() {
 		(multiplier === "T" && value === 25) || (multiplier !== "" && value === 0);
 
 	//@CHECK Is this approach ok to check for the winner?
+	//@REFACTORED Now we check if there is a winner and immediatly
 	useEffect(() => {
 		//@TODO Check if winning throw and set winner
 		//@DONE
-		console.log("Use effect is starterd ", gameState.winner.id);
 		if (gameState.winner.id) {
 			history("/result");
 		}

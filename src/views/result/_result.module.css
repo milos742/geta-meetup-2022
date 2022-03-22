@@ -3,13 +3,20 @@
 	margin: 0 auto;
 	padding-left: var(--side-bumper);
 	padding-right: var(--side-bumper); */
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 .row {
 	margin-top: var(--side-bumper);
 	margin-bottom: var(--side-bumper);
 }
-
+.logo {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 40px;
+}
 .avatarWrapper {
 	text-align: center;
 }
@@ -29,7 +36,8 @@
 }
 
 .newGame {
-	margin-top: 20px;
+	margin-top: auto;
+	margin-bottom: var(--side-bumper);
 	width: 100%;
 	font-weight: bold;
 	background-color: var(--secondary-color);

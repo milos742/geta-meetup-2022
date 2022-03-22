@@ -1,12 +1,12 @@
 .app {
-  text-align: center;
+	text-align: center;
 	max-width: var(--container);
 	margin: 0 auto;
 	padding-left: var(--side-bumper);
 	padding-right: var(--side-bumper);
-  border: 10px solid var(--darker);
-  min-height: 870px;
-  border-radius: 25px;
-  width: 395px;
+	border: 10px solid var(--darker);
+	height: 870px;
+	border-radius: 25px;
+	width: 395px;
 	background-color: var(--dark);
 }
