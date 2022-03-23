@@ -1,9 +1,8 @@
 .game {
-	/* color: green;
-	max-width: var(--container);
-	margin: 0 auto;
-	padding-left: var(--side-bumper);
-	padding-right: var(--side-bumper); */
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .link {
@@ -22,4 +21,12 @@
 .link:hover {
 	background-color: var(--secondary-color);
 	color: var(--primary-color);
+}
+
+.gameWrapper {
+	flex: 1;
+	margin-bottom: 10px;
+	border: 1px solid var(--secondary-color);
+	overflow: scroll;
+	position: relative;
 }

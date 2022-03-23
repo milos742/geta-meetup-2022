@@ -16,8 +16,6 @@ import { targets } from "../../utils/constants";
 import style from "./_board.module.css";
 
 export function Board() {
-	//@TODO Local state to hold multiplier
-	//@DONE
 	const [multiplier, setMultiplier] = useState("");
 	const history = useNavigate();
 
@@ -34,8 +32,6 @@ export function Board() {
 			payload: mergeValue,
 		});
 
-		//@TODO Test this to check if there is any unnecesary re-renders
-		//@DONE
 		setMultiplier("");
 	};
 
@@ -53,11 +49,7 @@ export function Board() {
 	const isNumberDisabled = (value) =>
 		(multiplier === "T" && value === 25) || (multiplier !== "" && value === 0);
 
-	//@CHECK Is this approach ok to check for the winner?
-	//@REFACTORED Now we check if there is a winner and immediatly
 	useEffect(() => {
-		//@TODO Check if winning throw and set winner
-		//@DONE
 		if (gameState.winner.id) {
 			history("/result");
 		}

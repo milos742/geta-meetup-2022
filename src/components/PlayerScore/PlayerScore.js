@@ -1,13 +1,11 @@
 import dart from "../../assets/icons/dart.svg";
 import { useGameContext } from "../../components/GameProvider/GameProvider";
 import { Avatar } from "../Avatar/Avatar";
-import { Row } from "../Row/Row";
 import style from "./_playerScore.module.css";
 
 export function PlayerScore({ hits, player }) {
 	
 	const gameState = useGameContext();
-	// console.log(hits, player)
 	return (
 		<div className={gameState.activePlayerId === player.id ? style.active : style.playerTable}>
 			<Avatar label={player.name} className={style.player} />
