@@ -15,6 +15,7 @@ export function addHit(state, action) {
 	const lastHistoryItem = stateCopy.historyHits[stateCopy.historyHits.length - 1];
 
 	const currPlayerHits = stateCopy.historyHits[stateCopy.historyHits.length - 1].hits;
+
 	//@TODO Set flag onto overflow score - Display hit but do not count it in total
 	//@DONE
 	if (currPlayerScore - calculatedValue > 0) {
@@ -39,7 +40,8 @@ export function addHit(state, action) {
 		stateCopy.winner = stateCopy.players[stateCopy.activePlayerId];
 	}
 
-	// Shift to new player history object
+	//@TODO Shift to new player history object
+	//@DONE
 	if (hitsCount === 3 || lastHistoryItem.isOverflowed) {
 		const currPlayerIndex = state.playerOrder.findIndex((id) => id === state.activePlayerId);
 		const nextPlayerIndex =

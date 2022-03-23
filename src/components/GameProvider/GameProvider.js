@@ -11,21 +11,19 @@ export const defaultGameState = {
 	players: {},
 	historyHits: [],
 	playerOrder: [],
-	winner: {}
+	winner: {},
 };
 
 /**
  * Hook for getting state
- * 
+ *
  * @returns {Object}
  */
 export const useGameContext = () => {
 	const context = useContext(GameProviderContext);
 
 	if (context === undefined) {
-		return new Error(
-			"useGameContext must be used inside GameProviderContext"
-		);
+		return new Error("useGameContext must be used inside GameProviderContext");
 	}
 
 	return context;
@@ -33,16 +31,14 @@ export const useGameContext = () => {
 
 /**
  * Hook for setting state
- * 
- * @returns 
+ *
+ * @returns
  */
 export const useGameDispatch = () => {
 	const context = useContext(GameProviderDispatch);
 
 	if (context === undefined) {
-		return new Error(
-			"useGameDispatch must be used inside GameProviderDispatch"
-		);
+		return new Error("useGameDispatch must be used inside GameProviderDispatch");
 	}
 
 	return context;

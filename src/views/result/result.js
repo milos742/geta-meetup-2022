@@ -23,7 +23,7 @@ export function Result() {
 	return (
 		<div className={style.result}>
 			<Row className={style.row}>
-				<Logo />
+				<Logo className={style.logo} />
 			</Row>
 
 			<Avatar key={gameState.winner.id} label={gameState.winner.name} winner={true} />
