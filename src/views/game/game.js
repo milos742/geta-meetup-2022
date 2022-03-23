@@ -1,7 +1,4 @@
-import {
-	useEffect,
-	useRef,
-} from "react";
+import { useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -14,31 +11,25 @@ import style from "./_game.module.css";
 export function Game() {
 	const gameState = useGameContext();
 	const history = useNavigate();
-	const fieldRef = useRef(null);
 
-	//@TODO Refatcor so it redirects to start view
-	//@REFACTORED Now we check redirects to start view
 	useEffect(() => {
-		// Check if route is accessed without state that is needed
 		if (!gameState.selectedGame || gameState.players.length < 1) {
 			history("/");
 		}
-
-		if (gameState.activePlayerId && fieldRef.current) {
-			fieldRef.current.scrollIntoView();
-		}
-	}, [gameState.selectedGame, gameState.players, history, gameState.activePlayerId]);
+	
+	}, [gameState.selectedGame, gameState.players, history]);
 
 	return (
 		<div className={style.game}>
 			<Header />
 		
-			<div ref={fieldRef} className={style.gameWrapper}>
+			<div className={style.gameWrapper}>
 				{gameState.playerOrder.map((id) => {
 					let history = [...gameState.historyHits].reverse().find((el) => el.playerId === id);
 
 					return (
 						<PlayerScore
+							isActive={gameState.activePlayerId === id}
 							key={id}
 							hits={history ? history.hits : []}
 							player={gameState.players[id]}

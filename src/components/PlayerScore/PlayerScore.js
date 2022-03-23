@@ -1,13 +1,25 @@
+import {
+	useEffect,
+	useRef,
+} from "react";
+
 import dart from "../../assets/icons/dart.svg";
-import { useGameContext } from "../../components/GameProvider/GameProvider";
 import { Avatar } from "../Avatar/Avatar";
 import style from "./_playerScore.module.css";
 
-export function PlayerScore({ hits, player }) {
+export function PlayerScore({ hits, player, isActive }) {
 	
-	const gameState = useGameContext();
+	const playerRef = useRef(null)
+
+	useEffect(() => {
+		if (isActive) {
+		}
+		playerRef.current.scrollIntoView({ behavior: "smooth" });
+	
+	}, [isActive]);
+
 	return (
-		<div className={gameState.activePlayerId === player.id ? style.active : style.playerTable}>
+		<div ref={playerRef} className={isActive ? style.active : style.playerTable}>
 			<Avatar label={player.name} className={style.player} />
 			<div className={style.hitsWrapper}>
 
