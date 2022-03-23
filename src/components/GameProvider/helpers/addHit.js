@@ -17,8 +17,11 @@ export function addHit(state, action) {
 	const currPlayerHits = stateCopy.historyHits[stateCopy.historyHits.length - 1].hits;
 	//@TODO Set flag onto overflow score - Display hit but do not count it in total
 	//@DONE
-	if (currPlayerScore - calculatedValue >= 0) {
+	if (currPlayerScore - calculatedValue > 0) {
 		currPlayerHits.push(hitValueString);
+	} else if (currPlayerScore - calculatedValue === 0 && hitValueString.includes('D')) {
+		currPlayerHits.push(hitValueString);
+		lastHistoryItem.setWinner = true;
 	} else {
 		currPlayerHits.push(hitValueString);
 		// Set flag on history object if is overflown
@@ -28,13 +31,11 @@ export function addHit(state, action) {
 	stateCopy.players[stateCopy.activePlayerId].score = setScore(stateCopy);
 
 	const hitsCount = currPlayerHits.length;
-	const lastHit = stateCopy.historyHits[stateCopy.historyHits.length - 1]
-	.hits[stateCopy.historyHits[stateCopy.historyHits.length - 1].hits.length - 1]
 
 	//@TODO set winner
 	//@DONE
 	
-	if (stateCopy.players[stateCopy.activePlayerId].score === 0 && lastHit.includes('D')) {
+	if (stateCopy.players[stateCopy.activePlayerId].score === 0 && lastHistoryItem.setWinner) {
 		stateCopy.winner = stateCopy.players[stateCopy.activePlayerId];
 	}
 
