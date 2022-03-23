@@ -3,6 +3,9 @@
 	margin: 0 auto;
 	padding-left: var(--side-bumper);
 	padding-right: var(--side-bumper); */
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }
 
 .start h1 {

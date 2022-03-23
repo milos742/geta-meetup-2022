@@ -80,21 +80,6 @@ export function Board() {
 				</Button>
 			))}
 
-			{/* <Button
-				// className={`${style.boardBtn} ${multiplier === "D" ? style.active : ""}`}
-				className={classNames(style.boardBtn, multiplier === "D" && style.active)}
-				onClick={() => handleSetMultiplier("D")}
-				theme="secondary">
-				D
-			</Button>
-
-			<Button
-				className={`${style.boardBtn} ${multiplier === "T" ? style.active : ""}`}
-				onClick={() => handleSetMultiplier("T")}
-				theme="secondary">
-				T
-			</Button> */}
-
 			<Button
 				className={style.boardBtn}
 				theme="secondary"
