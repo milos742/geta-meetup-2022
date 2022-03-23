@@ -1,4 +1,5 @@
 import { deepCopy } from "./deepCopy";
+import { handleGameOut } from "./handleGameOut";
 import { parseHitValue } from "./parseHitValue";
 import { setScore } from "./setScore";
 
@@ -16,29 +17,17 @@ export function addHit(state, action) {
 
 	const currPlayerHits = stateCopy.historyHits[stateCopy.historyHits.length - 1].hits;
 
-	//@TODO Set flag onto overflow score - Display hit but do not count it in total
-	//@DONE
-	if (currPlayerScore - calculatedValue > 1) {
-		currPlayerHits.push(hitValueString);
-	} else if (currPlayerScore - calculatedValue === 0 && hitValueString.includes('D')) {
-		currPlayerHits.push(hitValueString);
-		lastHistoryItem.setWinner = true;
-	} else {
-		currPlayerHits.push(hitValueString);
-		// Set flag on history object if is overflown
-		lastHistoryItem.isOverflowed = true;
-	}
-
+	handleGameOut(stateCopy.selectedGameOut, currPlayerScore, calculatedValue, currPlayerHits, hitValueString, lastHistoryItem);
+	
 	stateCopy.players[stateCopy.activePlayerId].score = setScore(stateCopy);
-
-	const hitsCount = currPlayerHits.length;
-
+	
 	//@TODO set winner
 	//@DONE
-	
 	if (stateCopy.players[stateCopy.activePlayerId].score === 0 && lastHistoryItem.setWinner) {
 		stateCopy.winner = stateCopy.players[stateCopy.activePlayerId];
 	}
+	
+	const hitsCount = currPlayerHits.length;
 
 	//@TODO Shift to new player history object
 	//@DONE

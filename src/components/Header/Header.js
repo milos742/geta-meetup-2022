@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
-import { Logo } from "../Logo/Logo";
-import { Row } from "../Row/Row";
 
 import { useGameContext } from "../GameProvider/GameProvider";
-
+import { Row } from "../Row/Row";
 import style from "./_header.module.css";
 
 export function Header() {
@@ -15,16 +13,14 @@ export function Header() {
 
 	return (
 		<Row className={style.header}>
-			<Logo className={style.logo} />
-
-			<div className={style.gameChosen}>
-				<span> G: {gameContext.selectedGame}</span>
-				<span> Round: {rounds.length}</span>
-			</div>
-
+			{/* <Logo className={style.logo} /> */}
 			<Link to={`/`} className={style.link}>
 				Back
 			</Link>
+				<span className={style.link}>{gameContext.selectedGame}</span>
+				<span className={style.link}>{gameContext.selectedGameOut}</span>
+				<span className={style.link}>Round: {rounds.length}</span>
+
 		</Row>
 	);
 }

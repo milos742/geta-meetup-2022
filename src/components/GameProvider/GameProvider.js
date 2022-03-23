@@ -1,4 +1,8 @@
-import { createContext, useContext, useReducer } from "react";
+import {
+	createContext,
+	useContext,
+	useReducer,
+} from "react";
 
 import { gameReducer } from "./gameReducer";
 
@@ -7,6 +11,7 @@ const GameProviderDispatch = createContext(undefined);
 
 export const defaultGameState = {
 	selectedGame: null,
+	selectedGameOut: null,
 	activePlayerId: "",
 	players: {},
 	historyHits: [],

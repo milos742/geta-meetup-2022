@@ -1,8 +1,9 @@
 import { v4 as uuidv4 } from "uuid";
-import { deepCopy } from "./helpers/deepCopy";
-import { addHit } from "./helpers/addHit";
-import { removeHit } from "./helpers/removeHit";
+
 import { defaultGameState } from "./GameProvider";
+import { addHit } from "./helpers/addHit";
+import { deepCopy } from "./helpers/deepCopy";
+import { removeHit } from "./helpers/removeHit";
 
 export const gameReducer = (state, action) => {
 	switch (action.type) {
@@ -27,6 +28,12 @@ export const gameReducer = (state, action) => {
 			return {
 				...state,
 				selectedGame: action.payload,
+			};
+		
+		case "SELECT_GAME_OUT":
+			return {
+				...state,
+				selectedGameOut: action.payload,
 			};
 
 		case "INIT_GAME":
