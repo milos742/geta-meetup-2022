@@ -3,10 +3,12 @@ import {
 	useGameContext,
 	useGameDispatch,
 } from "../../components/GameProvider/GameProvider";
+
 import {
 	gameOut,
 	games,
 } from "../../utils/constants";
+
 import style from "./_choseGame.module.css";
 
 export function ChooseGame() {
@@ -52,7 +54,7 @@ export function ChooseGame() {
 				{Object.values(gameOut).map((g) => (
 					<Button
 						key={g}
-						className={`${style.btn} ${g === gameState.selectedGameOut && style.selected}`}
+						className={`${style.btn} ${g === gameState.selectedGameOut ?  style.selected : ''}`}
 						theme={g !== gameState.selectedGameOut ? "secondary": "primary"}
 						onClick={() => handleSetGameOut(g)}>
 						{g}

@@ -11,14 +11,21 @@ export function addHit(state, action) {
 	const lastHistoryItem = stateCopy.historyHits[stateCopy.historyHits.length - 1];
 	const currPlayerHits = lastHistoryItem.hits;
 
-	handleGameOut(stateCopy.selectedGameOut, currPlayerScore, calculatedValue, currPlayerHits, hitValueString, lastHistoryItem);
-	
+	handleGameOut(
+		stateCopy.selectedGameOut,
+		currPlayerScore,
+		calculatedValue,
+		currPlayerHits,
+		hitValueString,
+		lastHistoryItem
+	);
+
 	stateCopy.players[stateCopy.activePlayerId].score = setScore(stateCopy);
-	
+
 	if (stateCopy.players[stateCopy.activePlayerId].score === 0 && lastHistoryItem.setWinner) {
 		stateCopy.winner = stateCopy.players[stateCopy.activePlayerId];
 	}
-	
+
 	const hitsCount = currPlayerHits.length;
 
 	if (hitsCount === 3 || lastHistoryItem.isOverflowed) {

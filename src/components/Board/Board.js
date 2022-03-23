@@ -24,7 +24,7 @@ export function Board() {
 	const gameState = useGameContext();
 	const dispatch = useGameDispatch();
 
-	const isDelButtonDisabled = gameState.historyHits[0].hits.length === 0;
+	const isDelButtonDisabled = gameState.historyHits[0]?.hits.length === 0;
 
 	const addHitValue = (value) => {
 		let mergeValue = multiplier + value;

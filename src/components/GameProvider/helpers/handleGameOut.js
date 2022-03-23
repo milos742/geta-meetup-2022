@@ -26,12 +26,12 @@ export const handleGameOut = (
 
 	switch(selectedGameOut) {
 		case gameOut.straightOut:
-			return gameOutReturn(0, '')
+			return gameOutReturn(0, '');
 		case gameOut.doubleOut:
-			return gameOutReturn(1, 'D')
+			return gameOutReturn(1, 'D');
 		case gameOut.tripleOut:
-			return gameOutReturn(2, 'T')
+			return gameOutReturn(2, 'T');
 		default:
-			return gameOutReturn(0, '')
+			return gameOutReturn(0, '');
 	}
 }
