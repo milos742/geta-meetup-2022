@@ -1,4 +1,4 @@
-import { winRule } from "../../../utils/constants";
+import { gameOut } from "../../../utils/constants";
 
 export const handleGameOut = (
 	selectedGameOut,
@@ -25,11 +25,11 @@ export const handleGameOut = (
 	}
 
 	switch(selectedGameOut) {
-		case winRule.straightOut:
+		case gameOut.straightOut:
 			return gameOutReturn(0, '')
-		case winRule.doubleOut:
+		case gameOut.doubleOut:
 			return gameOutReturn(1, 'D')
-		case winRule.tripleOut:
+		case gameOut.tripleOut:
 			return gameOutReturn(2, 'T')
 		default:
 			return gameOutReturn(0, '')

@@ -4,8 +4,8 @@ import {
 	useGameDispatch,
 } from "../../components/GameProvider/GameProvider";
 import {
+	gameOut,
 	games,
-	winRule,
 } from "../../utils/constants";
 import style from "./_choseGame.module.css";
 
@@ -23,11 +23,11 @@ export function ChooseGame() {
 		}
 	};
 
-	const handleSetGameOut = (winRule) => {
-		if (winRule !== gameState.selectedWinRule) {
+	const handleSetGameOut = (gameOut) => {
+		if (gameOut !== gameState.selectedGameOut) {
 			dispatch({
 				type: "SELECT_GAME_OUT",
-				payload: winRule,
+				payload: gameOut,
 			});
 		}
 	};
@@ -49,7 +49,7 @@ export function ChooseGame() {
 
 			<h2>Choose game out:</h2>
 			<div className={style.inputWrapper}>
-				{Object.values(winRule).map((g) => (
+				{Object.values(gameOut).map((g) => (
 					<Button
 						key={g}
 						className={`${style.btn} ${g === gameState.selectedGameOut && style.selected}`}

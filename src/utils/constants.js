@@ -3,7 +3,7 @@ export const games = {
 	501: "501",
 };
 
-export const winRule = {
+export const gameOut = {
 	straightOut: "Straight Out",
 	doubleOut: "Double Out",
 	tripleOut: "Triple Out",
