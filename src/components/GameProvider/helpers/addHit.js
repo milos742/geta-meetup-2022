@@ -18,7 +18,7 @@ export function addHit(state, action) {
 
 	//@TODO Set flag onto overflow score - Display hit but do not count it in total
 	//@DONE
-	if (currPlayerScore - calculatedValue > 0) {
+	if (currPlayerScore - calculatedValue > 1) {
 		currPlayerHits.push(hitValueString);
 	} else if (currPlayerScore - calculatedValue === 0 && hitValueString.includes('D')) {
 		currPlayerHits.push(hitValueString);
