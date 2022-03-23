@@ -11,6 +11,7 @@ import style from "./_game.module.css";
 export function Game() {
 	const gameState = useGameContext();
 
+	//@TODO Refatcor so it redirects to start view
 	if (!gameState.selectedGame || gameState.players.length < 1) {
 		return (
 			<div className={style.game}>
@@ -33,7 +34,6 @@ export function Game() {
 				return (
 					<Row key={id}>
 						<PlayerScore
-							
 							hits={history ? history.hits : []}
 							player={gameState.players[id]}
 						/>
