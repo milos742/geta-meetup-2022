@@ -1,25 +1,24 @@
 .link,
 .link:hover {
-	background-color: var(--primary-color);
 	color: var(--secondary-color);
+	background-color: var(--primary-color);
 }
 
 .link {
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	width: 100%;
+	display: flex;
 	min-height: 50px;
 	margin-top: auto;
-	margin-bottom: var(--side-bumper);
-	border-radius: 25px;
-	background-color: var(--secondary-color);
-	color: var(--primary-color);
 	font-weight: bold;
+	align-items: center;
+	border-radius: 25px;
+	justify-content: center;
+	color: var(--primary-color);
+	background-color: var(--secondary-color);
 }
 
 .linkDisabled {
-	background-color: var(--lgray);
 	color: var(--gray);
 	pointer-events: none;
+	background-color: var(--lgray);
 }

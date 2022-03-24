@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import { useEffect } from "react";
 import Confetti from "react-confetti";
 import { useNavigate } from "react-router-dom";
 
@@ -26,9 +26,12 @@ export function Result() {
 		history("/");
 	};
 
-	const newGameClass = classNames(style.newGame, {
-		[style.startGame]: !gameState.winner.id,
-	});
+	useEffect(() => {
+		if (!gameState.winner.id) {
+			history("/");
+		}
+	
+	}, [gameState.winner.id, history]);
 
 	return (
 		<div className={style.result}>
@@ -51,8 +54,8 @@ export function Result() {
 					))}
 			</ul>
 
-			<Button onClick={handleResetGame} className={newGameClass}>
-				{gameState.winner.id ? 'NEW GAME' : 'START GAME'}
+			<Button onClick={handleResetGame} className={style.newGame}>
+				NEW GAME
 			</Button>
 		</div>
 	);

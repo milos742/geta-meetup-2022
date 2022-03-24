@@ -2,6 +2,7 @@ import {
 	memo,
 	useState,
 } from "react";
+import { isCompositeComponentWithType } from "react-dom/test-utils";
 
 import { Avatar } from "../../components/Avatar/Avatar";
 import { Button } from "../../components/Button/Button";
@@ -46,6 +47,8 @@ export function AddPlayer() {
 		});
 	};
 
+	const arePlayersAdded = !!Object.values(gameState.players).length;
+
 	return (
 		<>
 			<form className={style.inputWrapper}>
@@ -62,11 +65,10 @@ export function AddPlayer() {
 					disabled={!inputVal}
 					className={style.btnAddPlayer}
 					onClick={handlePlayerAdd}>
-					+
 				</Button>
 			</form>
 
-			<PlayerListMemo players={gameState.players} onRemove={handlePlayerRemove} />
+			{arePlayersAdded && <PlayerListMemo players={gameState.players} onRemove={handlePlayerRemove} />}
 		</>
 	);
 }

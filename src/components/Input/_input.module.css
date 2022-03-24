@@ -1,16 +1,18 @@
 .input {
 	width: 100%;
-	min-height: 50px;
-	padding: 5px 10px 5px 10px;
 	border: none;
+	min-height: 50px;
 	border-radius: 25px;
+	padding: 5px 10px 5px 10px;
 }
+
 .label {
 	display: block;
-	margin-bottom: 10px;
+	margin-bottom: 6px;
 	color: var(--light);
 }
+
 .label_text {
-	color: var(--light);
 	display: block;
+	color: var(--light);
 }

@@ -1,0 +1,4 @@
+.choosingList {
+    display: flex;
+    flex-direction: column;
+}
