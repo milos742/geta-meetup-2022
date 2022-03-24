@@ -1,12 +1,13 @@
 .board {
 	flex-wrap: wrap;
 	justify-content: center;
+	padding: 20px 0 13px;
 }
 
 .boardBtn {
 	margin: 0 7px 7px;
 	font-weight: bold;
-	font-size: var(--small);
+	font-size: var(--x-small);
 }
 
 .boardBtn.active {

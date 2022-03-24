@@ -25,7 +25,6 @@
 
 .gameWrapper {
 	flex: 1;
-	margin-bottom: 10px;
 	border: 1px solid var(--secondary-color);
 	overflow: scroll;
 	position: relative;
