@@ -1,10 +1,7 @@
 .result {
-	/* max-width: var(--container);
-	margin: 0 auto;
-	padding-left: var(--side-bumper);
-	padding-right: var(--side-bumper); */
 	height: 100%;
 	display: flex;
+	position: relative;
 	flex-direction: column;
 }
 
@@ -12,22 +9,24 @@
 	margin-top: var(--side-bumper);
 	margin-bottom: var(--side-bumper);
 }
+
 .logo {
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 40px;
 }
+
 .avatarWrapper {
 	text-align: center;
 }
 
 .avatarWrapper li {
 	display: flex;
-	justify-content: center;
-	align-items: center;
 	color: #fff;
-	margin-bottom: 10px;
 	font-weight: bold;
+	margin-bottom: 10px;
+	align-items: center;
+	justify-content: center;
 }
 
 .avatarWrapper li span {
@@ -36,15 +35,20 @@
 }
 
 .newGame {
-	margin-top: auto;
-	margin-bottom: var(--side-bumper);
+	z-index: 2;
 	width: 100%;
+	margin-top: auto;
 	font-weight: bold;
-	background-color: var(--secondary-color);
 	color: var(--primary-color);
+	margin-bottom: var(--side-bumper);
+	background-color: var(--secondary-color);
 }
 
 .newGame:hover {
-	background-color: var(--primary-color);
 	color: var(--secondary-color);
+	background-color: var(--primary-color);
+}
+
+.startGame {
+	margin-top: 200px;
 }

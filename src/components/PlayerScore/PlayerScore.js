@@ -25,7 +25,7 @@ export function PlayerScore({ hits, player, isActive }) {
 	return (
 		<div ref={playerRef} className={playerClassName}>
 			<div className={style.playerTableSide}>
-				<Avatar label={player.name} className={style.player} />
+				<Avatar label={player.name.toLowerCase()} className={style.player} />
 			</div>
 			<div className={style.hitsWrapper}>
 

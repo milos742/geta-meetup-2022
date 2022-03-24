@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import classNames from "classnames";
 
 import style from "./_button.module.css";

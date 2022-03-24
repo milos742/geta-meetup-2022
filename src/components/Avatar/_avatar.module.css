@@ -1,8 +1,9 @@
 .avatar {
 	width: 50px;
+	position: relative;
 	text-align: center;
 	margin: 0 15px 15px 0;
-	position: relative;
+	text-transform: capitalize;
 }
 
 .avatar:last-child {
@@ -19,19 +20,19 @@ p {
 }
 
 .removeBtn {
+	padding: 0;
+	top: -12px;
+	right: -12px;
+	font-size: 25px;
 	min-width: 30px;
 	min-height: 30px;
-	padding: 0;
-	transform: rotate(45deg);
-	font-size: 25px;
 	position: absolute;
-	right: -12px;
-	top: -12px;
+	transform: rotate(45deg);
 }
 
 .winner {
 	width: 150px;
 	margin: 0 auto;
-	font-size: var(--large);
     margin-bottom: 50px;
+	font-size: var(--large);
 }
