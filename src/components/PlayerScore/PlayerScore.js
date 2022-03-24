@@ -9,13 +9,12 @@ import style from "./_playerScore.module.css";
 
 export function PlayerScore({ hits, player, isActive }) {
 	
-	const playerRef = useRef(null)
+	const playerRef = useRef(null);
 
 	useEffect(() => {
 		if (isActive) {
+			playerRef.current.scrollIntoView({ behavior: "smooth" });
 		}
-		playerRef.current.scrollIntoView({ behavior: "smooth" });
-	
 	}, [isActive]);
 
 	return (
