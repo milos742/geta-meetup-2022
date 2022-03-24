@@ -2,8 +2,8 @@ import { v4 as uuidv4 } from "uuid";
 
 import { defaultGameState } from "./GameProvider";
 import { addHit } from "./helpers/addHit";
-import { deepCopy } from "./helpers/deepCopy";
 import { removeHit } from "./helpers/removeHit";
+import { initGame } from "./helpers/initGame";
 
 export const gameReducer = (state, action) => {
 	switch (action.type) {
@@ -29,7 +29,7 @@ export const gameReducer = (state, action) => {
 				...state,
 				selectedGame: action.payload,
 			};
-		
+
 		case "SELECT_GAME_OUT":
 			return {
 				...state,
@@ -37,28 +37,14 @@ export const gameReducer = (state, action) => {
 			};
 
 		case "INIT_GAME":
-			const stateCopy = deepCopy(state);
-
-			stateCopy.playerOrder = Object.values(state.players)
-				.map((player) => player.id)
-				.sort(() => 0.5 - Math.random());
-
-			stateCopy.activePlayerId = stateCopy.playerOrder[0];
-
-			Object.keys(stateCopy.players).forEach((key) => {
-				stateCopy.players[key].score = Number(stateCopy.selectedGame);
-			});
-
-			stateCopy.historyHits = [{ playerId: stateCopy.activePlayerId, hits: [] }];
-
-			return stateCopy;
+			return initGame(state);
 
 		case "ADD_HIT":
 			return addHit(state, action);
 
 		case "REMOVE_HIT":
 			return removeHit(state, action);
-			
+
 		case "RESET_GAME":
 			return {
 				...defaultGameState,

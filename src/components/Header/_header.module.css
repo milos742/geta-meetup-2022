@@ -16,7 +16,7 @@
 	display: grid;
 	place-items: center;
 	padding: 10px;
-	min-width: 70px;
+	min-width: 100px;
 	min-height: 50px;
 	border-radius: 25px;
 	background-color: var(--primary-color);
@@ -42,6 +42,7 @@
 
 @media screen and (min-width: 450px) {
 	.gameChosen {
+		width: calc(100% - 100px);
 		min-width: 140px;
 		font-size: var(--small);
 	}

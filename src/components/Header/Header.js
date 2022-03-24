@@ -17,10 +17,11 @@ export function Header() {
 			<Link to={`/`} className={style.link}>
 				Back
 			</Link>
-				<span className={style.link}>{gameContext.selectedGame}</span>
-				<span className={style.link}>{gameContext.selectedGameOut}</span>
-				<span className={style.link}>Round: {rounds.length}</span>
-
+			<div className={style.gameChosen}>
+				<span>{gameContext.selectedGame}</span>
+				<span> {gameContext.selectedGameOut}</span>
+				<span> Round: {rounds.length}</span>
+			</div>
 		</Row>
 	);
 }

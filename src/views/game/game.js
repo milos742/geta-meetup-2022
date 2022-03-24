@@ -6,26 +6,33 @@ import { Board } from "../../components/Board/Board";
 import { useGameContext } from "../../components/GameProvider/GameProvider";
 import { Header } from "../../components/Header/Header";
 import { PlayerScore } from "../../components/PlayerScore/PlayerScore";
+
+import classNames from "classnames";
 import style from "./_game.module.css";
 
 export function Game() {
 	const gameState = useGameContext();
 	const history = useNavigate();
 
+	const className = classNames(style.gameWrapper, {
+		[style.evenSpace]: gameState.playerOrder.length <= 3,
+	});
+
 	useEffect(() => {
-		if (!gameState.selectedGame || gameState.players.length < 1) {
+		if (!gameState.selectedGame || gameState.playerOrder.length < 1) {
 			history("/");
 		}
-	
-	}, [gameState.selectedGame, gameState.players, history]);
+	}, [gameState.selectedGame, gameState.playerOrder, history]);
 
 	return (
 		<div className={style.game}>
 			<Header />
-		
-			<div className={style.gameWrapper}>
+
+			<div className={className}>
 				{gameState.playerOrder.map((id) => {
-					let history = [...gameState.historyHits].reverse().find((el) => el.playerId === id);
+					let history = [...gameState.historyHits]
+						.reverse()
+						.find((el) => el.playerId === id);
 
 					return (
 						<PlayerScore
@@ -33,6 +40,7 @@ export function Game() {
 							key={id}
 							hits={history ? history.hits : []}
 							player={gameState.players[id]}
+							className={style.playerScore}
 						/>
 					);
 				})}

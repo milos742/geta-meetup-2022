@@ -5,6 +5,10 @@
 	justify-content: space-between;
 }
 
+.playerScore:last-child {
+	margin-bottom: 0;
+}
+
 .link {
 	display: grid;
 	place-items: center;
@@ -28,4 +32,12 @@
 	border: 1px solid var(--secondary-color);
 	overflow: scroll;
 	position: relative;
+}
+.evenSpace {
+	display: flex;
+	flex-direction: column;
+	
+}
+.evenSpace .playerScore {
+	flex: 1;
 }

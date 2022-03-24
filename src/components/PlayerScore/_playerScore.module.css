@@ -9,6 +9,10 @@
 	border: 1px solid var(--secondary-color);
 }
 
+.playerTable:last-child {
+	margin-bottom: 0;
+}
+
 .active {
 	opacity: 1;
 }
@@ -17,7 +21,7 @@
 	flex: 1;
 	height: 100%;
 	display: flex;
-	margin-top: 48px;
+	align-items: center;
 	justify-content: center;
 }
 
@@ -26,6 +30,7 @@
 	width: 100%;
 	margin: 0 auto;
 	text-align: center;
+	margin-bottom: -19px;
 }
 
 .player img {
@@ -53,7 +58,7 @@
 	top: 0;
 	left: 50%;
 	z-index: 1;
-	content: '';
+	content: "";
 	width: 33.33%;
 	display: block;
 	position: absolute;

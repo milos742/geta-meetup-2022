@@ -1,7 +1,4 @@
-import {
-	useEffect,
-	useRef,
-} from "react";
+import { useEffect, useRef } from "react";
 
 import classNames from "classnames";
 
@@ -9,10 +6,10 @@ import dart from "../../assets/icons/dart.svg";
 import { Avatar } from "../Avatar/Avatar";
 import style from "./_playerScore.module.css";
 
-export function PlayerScore({ hits, player, isActive }) {
+export function PlayerScore({ hits, player, isActive, className }) {
 	const playerRef = useRef(null);
-	
-	const playerClassName = classNames(style.playerTable, {
+
+	const playerClassName = classNames(style.playerTable, className, {
 		[style.active]: isActive,
 	});
 
@@ -28,21 +25,20 @@ export function PlayerScore({ hits, player, isActive }) {
 				<Avatar label={player.name.toLowerCase()} className={style.player} />
 			</div>
 			<div className={style.hitsWrapper}>
-
 				<div className={style.hitsRow}>
 					<div className={style.arrow}>
-						<img src={dart} alt={dart}/>
+						<img src={dart} alt={dart} />
 					</div>
 					<div className={style.arrow}>
-						<img src={dart} alt={dart}/>
+						<img src={dart} alt={dart} />
 					</div>
 					<div className={style.arrow}>
-						<img src={dart} alt={dart}/>
+						<img src={dart} alt={dart} />
 					</div>
 				</div>
 
 				<div className={style.hitsRow}>
-					{hits.map((hit,i) => (
+					{hits.map((hit, i) => (
 						<div key={i} className={style.hit}>
 							{hit}
 						</div>
@@ -51,9 +47,7 @@ export function PlayerScore({ hits, player, isActive }) {
 			</div>
 
 			<div className={style.playerTableSide}>
-				<span className={style.totalScore}>
-					{player.score}
-				</span>
+				<span className={style.totalScore}>{player.score}</span>
 			</div>
 		</div>
 	);
