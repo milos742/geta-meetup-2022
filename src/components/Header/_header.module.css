@@ -26,6 +26,11 @@
 	font-size: var(--x-small);
 }
 
+.link {
+	margin-left: 0px;
+	min-width: 120px;
+}
+
 .link:hover {
 	background-color: var(--secondary-color);
 	color: var(--primary-color);
@@ -40,6 +45,14 @@
 	font-size: var(--x-small);
 }
 
+.round {
+	color: red;
+}
+
+.active {
+	color: yellow;
+}
+
 @media screen and (min-width: 450px) {
 	.gameChosen {
 		width: calc(100% - 100px);
@@ -47,7 +60,7 @@
 		font-size: var(--small);
 	}
 	.link {
-		min-width: 50px;
+		min-width: 80px;
 		font-size: var(--small);
 	}
 }

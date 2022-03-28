@@ -21,7 +21,11 @@ h2 {
 	text-align: left;
 	margin: 0 0 6px;
 }
-
+.btnHalf:hover,
+.btnOneThird:hover {
+	background-color: var(--primary-color);
+	color: var(--secondary-color);
+}
 .btnHalf {
 	width: 48%;
 }
