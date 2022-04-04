@@ -1,16 +1,11 @@
-import {
-	useEffect,
-	useState,
-} from "react";
+import { useEffect, useState } from "react";
 
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
 
 import { Button } from "../../components/Button/Button";
-import {
-	useGameContext,
-	useGameDispatch,
-} from "../../components/GameProvider/GameProvider";
+import { useGameContext, useGameDispatch } from "../../components/GameProvider/GameProvider";
+
 import { Row } from "../../components/Row/Row";
 import { targets } from "../../utils/constants";
 import style from "./_board.module.css";
@@ -24,12 +19,12 @@ export function Board() {
 
 	const isDelButtonDisabled = gameState.historyHits[0]?.hits.length === 0;
 
-	const addHitValue = (value) => {
-		let mergeValue = multiplier + value;
+	const addHit = (value) => {
+		const hitValue = multiplier + value;
 
 		dispatch({
 			type: "ADD_HIT",
-			payload: mergeValue,
+			payload: hitValue,
 		});
 
 		setMultiplier("");
@@ -61,8 +56,8 @@ export function Board() {
 				<Button
 					key={value}
 					theme="secondary"
-					className={style.boardBtn}
-					onClick={() => addHitValue(value)}
+					className={style.btn}
+					onClick={() => addHit(value)}
 					disabled={isNumberDisabled(value)}>
 					{value}
 				</Button>
@@ -73,15 +68,15 @@ export function Board() {
 					key={m}
 					theme="secondary"
 					onClick={() => handleSetMultiplier(m)}
-					className={classNames(style.boardBtn, multiplier === m && style.active)}>
+					className={classNames(style.btn, multiplier === m && style.active)}>
 					{m}
 				</Button>
 			))}
 
 			<Button
-				className={style.boardBtn}
+				className={style.btn}
 				theme="secondary"
-				onClick={() => removeHitValue()}
+				onClick={removeHitValue}
 				disabled={isDelButtonDisabled}>
 				DEL
 			</Button>

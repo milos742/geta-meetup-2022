@@ -1,6 +1,6 @@
 :root {
 	/* Colors */
-	--light: #fff;
+	--white: #fff;
 	--dark: #2e2e2e;
 	--darker: #171714;
 	--accent: #a8dadb;
@@ -38,5 +38,5 @@ h4,
 h5,
 h6,
 p {
-	color: var(--light);
+	color: var(--white);
 }

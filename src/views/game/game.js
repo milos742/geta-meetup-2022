@@ -30,17 +30,13 @@ export function Game() {
 
 			<div className={className}>
 				{gameState.playerOrder.map((id) => {
-					let history = [...gameState.historyHits]
-						.reverse()
-						.find((el) => el.playerId === id);
-
 					return (
 						<PlayerScore
-							isActive={gameState.activePlayerId === id}
+							id={id}
 							key={id}
-							hits={history ? history.hits : []}
-							player={gameState.players[id]}
 							className={style.playerScore}
+							player={gameState.players[id]}
+							isActive={gameState.activePlayerId === id}
 						/>
 					);
 				})}

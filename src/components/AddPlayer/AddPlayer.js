@@ -1,15 +1,9 @@
-import {
-	memo,
-	useState,
-} from "react";
+import { memo, useState } from "react";
 import { isCompositeComponentWithType } from "react-dom/test-utils";
 
 import { Avatar } from "../../components/Avatar/Avatar";
 import { Button } from "../../components/Button/Button";
-import {
-	useGameContext,
-	useGameDispatch,
-} from "../../components/GameProvider/GameProvider";
+import { useGameContext, useGameDispatch } from "../../components/GameProvider/GameProvider";
 import { Input } from "../Input/Input";
 import style from "./_addPlayer.module.css";
 
@@ -53,22 +47,23 @@ export function AddPlayer() {
 		<>
 			<form className={style.inputWrapper}>
 				<Input
-					placeholder={"Type name"}
-					label="Add players:"
+					maxLength="7"
 					name="player"
 					value={inputVal}
+					label="Add players:"
+					placeholder="Type name"
 					onChange={(e) => setInputVal(e.target.value)}
-					maxLength="7"
 				/>
 
 				<Button
 					disabled={!inputVal}
 					className={style.btnAddPlayer}
-					onClick={handlePlayerAdd}>
-				</Button>
+					onClick={handlePlayerAdd}></Button>
 			</form>
 
-			{arePlayersAdded && <PlayerListMemo players={gameState.players} onRemove={handlePlayerRemove} />}
+			{arePlayersAdded && (
+				<PlayerListMemo players={gameState.players} onRemove={handlePlayerRemove} />
+			)}
 		</>
 	);
 }

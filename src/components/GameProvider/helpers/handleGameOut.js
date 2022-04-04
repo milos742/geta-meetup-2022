@@ -1,22 +1,33 @@
 import { gameOut } from "../../../utils/constants";
 
-export const handleGameOut = (
-	selectedGameOut,
+/**
+ * PRovjerava poslednji hit:
+ * - Da li ima prefix
+ * - Da li da postavi winnera u zavisnosti od toga
+ * koji je tip igre odabran
+ * @param {*} param0 
+ */
+
+export const handleGameOut = ({
+	stateCopy,
 	currPlayerScore,
 	calculatedValue, 
 	currPlayerHits,
 	hitValueString,
 	lastHistoryItem
-	) => {
+	}) => {
 	
 	const calculatedScore = currPlayerScore - calculatedValue;
 	const updatedCurrPlayerHits = currPlayerHits.push(hitValueString);
 
 	const gameOutReturn = (condition, multiplier) => {
+		// Treba da provjeri koja je minimalna moguca vrijednost rezultata za odabranu igru
 		if (calculatedScore > condition) {
 			return updatedCurrPlayerHits;
 		}
 		
+		// Provjerava da li je rezultat nula i da li u poslednjem hitu inkluduje
+		// D ili T zavisno od toga koji je tip game-a selektovan
 		if (calculatedScore === 0 && hitValueString.includes(multiplier)) {
 			return (updatedCurrPlayerHits, lastHistoryItem.setWinner = true);
 		}
@@ -24,14 +35,17 @@ export const handleGameOut = (
 		return (updatedCurrPlayerHits, lastHistoryItem.isOverflowed = true);
 	}
 
-	switch(selectedGameOut) {
+	switch(stateCopy.selectedGameOut) {
 		case gameOut.straightOut:
-			return gameOutReturn(0, '');
+			 gameOutReturn(0, '');
+			 break;
 		case gameOut.doubleOut:
-			return gameOutReturn(1, 'D');
+			 gameOutReturn(1, 'D');
+			 break;
 		case gameOut.tripleOut:
-			return gameOutReturn(2, 'T');
+			 gameOutReturn(2, 'T');
+			 break;
 		default:
-			return gameOutReturn(0, '');
+			 gameOutReturn(0, '');
 	}
 }

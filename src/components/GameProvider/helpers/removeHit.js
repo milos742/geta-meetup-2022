@@ -3,16 +3,18 @@ import { setScore } from "./setScore";
 
 export function removeHit(state, action) {
 	const stateCopy = deepCopy(state);
-	let currPlayerScore = stateCopy.players[stateCopy.activePlayerId].score;
 
-	// We are catching how much hits is left in hits
+	// We are catching how much hits is thrown
 	const hitsCount = stateCopy.historyHits[stateCopy.historyHits.length - 1].hits.length;
 
 	if (hitsCount === 0) {
-		const currPlayerIndex = state.playerOrder.findIndex((id) => id === stateCopy.activePlayerId);
+		const currPlayerIndex = state.playerOrder.findIndex(
+			(id) => id === stateCopy.activePlayerId
+		);
 
 		// Set prev index
-		let prevPlayerIndex = currPlayerIndex <= 0 ? stateCopy.playerOrder.length - 1 : currPlayerIndex - 1;
+		const prevPlayerIndex =
+			currPlayerIndex <= 0 ? stateCopy.playerOrder.length - 1 : currPlayerIndex - 1;
 
 		stateCopy.activePlayerId = stateCopy.playerOrder[prevPlayerIndex];
 
@@ -28,8 +30,7 @@ export function removeHit(state, action) {
 
 	currRoundHits.pop();
 
-	currPlayerScore = setScore(stateCopy);
-	stateCopy.players[stateCopy.activePlayerId].score = currPlayerScore;
+	stateCopy.players[stateCopy.activePlayerId].score = setScore(stateCopy);
 
 	return stateCopy;
 }

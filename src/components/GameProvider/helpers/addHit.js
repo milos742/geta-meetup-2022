@@ -5,23 +5,25 @@ import { setScore } from "./setScore";
 
 export function addHit(state, action) {
 	const stateCopy = deepCopy(state);
-	let hitValueString = action.payload;
-	let calculatedValue = parseHitValue(action.payload);
+	const hitValueString = action.payload;
+	const calculatedValue = parseHitValue(action.payload);
 	const currPlayerScore = stateCopy.players[stateCopy.activePlayerId].score;
 	const lastHistoryItem = stateCopy.historyHits[stateCopy.historyHits.length - 1];
 	const currPlayerHits = lastHistoryItem.hits;
 
-	handleGameOut(
-		stateCopy.selectedGameOut,
+	handleGameOut({
+		stateCopy,
 		currPlayerScore,
 		calculatedValue,
 		currPlayerHits,
 		hitValueString,
-		lastHistoryItem
-	);
+		lastHistoryItem,
+	});
 
 	stateCopy.players[stateCopy.activePlayerId].score = setScore(stateCopy);
 
+	// Here we are checking score and is there a setWinner attribute in history
+	// And then we are setting that plater to be the winner
 	if (stateCopy.players[stateCopy.activePlayerId].score === 0 && lastHistoryItem.setWinner) {
 		stateCopy.winner = stateCopy.players[stateCopy.activePlayerId];
 	}

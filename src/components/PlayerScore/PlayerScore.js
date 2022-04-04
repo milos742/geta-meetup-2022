@@ -1,13 +1,19 @@
 import { useEffect, useRef } from "react";
 
 import classNames from "classnames";
+import { useGameContext } from "../../components/GameProvider/GameProvider";
 
 import dart from "../../assets/icons/dart.svg";
 import { Avatar } from "../Avatar/Avatar";
 import style from "./_playerScore.module.css";
 
-export function PlayerScore({ hits, player, isActive, className }) {
+export function PlayerScore({ id, player, isActive, className }) {
+	const gameState = useGameContext();
 	const playerRef = useRef(null);
+
+	let history = [...gameState.historyHits].reverse().find((el) => el.playerId === id);
+
+	let hits = history ? history.hits : [];
 
 	const playerClassName = classNames(style.playerTable, className, {
 		[style.active]: isActive,

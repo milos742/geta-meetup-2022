@@ -38,7 +38,7 @@
 }
 
 .hitsWrapper {
-	height: 99px;
+	height: 100px;
 	margin-top: 1px;
 	width: calc(100% - 160px);
 }
@@ -69,6 +69,7 @@
 }
 
 .arrow {
+	padding: 5px;
 	background-color: var(--primary-color);
 }
 
@@ -96,10 +97,6 @@
 	justify-content: center;
 	color: var(--primary-color);
 	background-color: var(--secondary-color);
-}
-
-.arrow {
-	padding: 5px;
 }
 
 .arrow img {

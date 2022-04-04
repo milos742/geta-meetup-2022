@@ -9,10 +9,10 @@
 .label {
 	display: block;
 	margin-bottom: 6px;
-	color: var(--light);
+	color: var(--white);
 }
 
 .label_text {
 	display: block;
-	color: var(--light);
+	color: var(--white);
 }
