@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
@@ -19,23 +19,27 @@ export function Board() {
 
 	const isDelButtonDisabled = gameState.historyHits[0]?.hits.length === 0;
 
-	const addHit = (value) => {
+	const resetMultiplier = () => {
+		if(multiplier !== '')
+		setMultiplier("");
+	}
+
+	const addHit = useCallback((value) => {
 		const hitValue = multiplier + value;
 
 		dispatch({
 			type: "ADD_HIT",
 			payload: hitValue,
 		});
+		resetMultiplier()
+	}, [dispatch, multiplier]);
 
-		setMultiplier("");
-	};
-
-	const removeHitValue = () => {
+	const removeHitValue = useCallback(() => {
 		dispatch({
 			type: "REMOVE_HIT",
 		});
-		setMultiplier("");
-	};
+		resetMultiplier()
+	},[dispatch]);
 
 	const handleSetMultiplier = (value) => {
 		setMultiplier(value !== multiplier ? value : "");
