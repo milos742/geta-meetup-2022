@@ -6,7 +6,7 @@ import {
 
 import { gameReducer } from "./gameReducer";
 
-const GameProviderContext = createContext(undefined);
+const GameProviderState = createContext(undefined);
 const GameProviderDispatch = createContext(undefined);
 
 export const defaultGameState = {
@@ -25,10 +25,10 @@ export const defaultGameState = {
  * @returns {Object}
  */
 export const useGameContext = () => {
-	const context = useContext(GameProviderContext);
+	const context = useContext(GameProviderState);
 
 	if (context === undefined) {
-		return new Error("useGameContext must be used inside GameProviderContext");
+		return new Error("useGameContext must be used inside GameProviderState");
 	}
 
 	return context;
@@ -49,14 +49,16 @@ export const useGameDispatch = () => {
 	return context;
 };
 
+
+
 export const GameProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(gameReducer, defaultGameState);
 
 	return (
-		<GameProviderContext.Provider value={state}>
+		<GameProviderState.Provider value={state}>
 			<GameProviderDispatch.Provider value={dispatch}>
 				{children}
 			</GameProviderDispatch.Provider>
-		</GameProviderContext.Provider>
+		</GameProviderState.Provider>
 	);
 };
