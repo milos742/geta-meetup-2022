@@ -1,11 +1,16 @@
-import { memo, useState } from "react";
-import { isCompositeComponentWithType } from "react-dom/test-utils";
+import {
+  memo,
+  useState,
+} from 'react';
 
-import { Avatar } from "../../components/Avatar/Avatar";
-import { Button } from "../../components/Button/Button";
-import { useGameContext, useGameDispatch } from "../../components/GameProvider/GameProvider";
-import { Input } from "../Input/Input";
-import style from "./_addPlayer.module.css";
+import { Avatar } from '../../components/Avatar/Avatar';
+import { Button } from '../../components/Button/Button';
+import {
+  useGameContext,
+  useGameDispatch,
+} from '../../components/GameProvider/GameProvider';
+import { Input } from '../Input/Input';
+import style from './_addPlayer.module.css';
 
 const PlayerList = ({ players, onRemove }) => (
 	<ul className={style.avatarWrapper}>

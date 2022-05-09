@@ -1,7 +1,6 @@
-import React from "react";
-import style from "./_input.module.css";
+import React from 'react';
 
-import { v4 as uuidv4 } from "uuid";
+import style from './_input.module.css';
 
 function InputFC({ label, name, ...rest }, ref) {
 
