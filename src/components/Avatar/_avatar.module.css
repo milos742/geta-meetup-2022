@@ -1,0 +1,38 @@
+.avatar {
+	width: 50px;
+	position: relative;
+	text-align: center;
+	margin: 0 15px 15px 0;
+	text-transform: capitalize;
+}
+
+.avatar:last-child {
+	margin-right: 0;
+}
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+p {
+	margin: 0;
+}
+
+.removeBtn {
+	padding: 0;
+	top: -12px;
+	right: -12px;
+	font-size: 25px;
+	min-width: 30px;
+	min-height: 30px;
+	position: absolute;
+	transform: rotate(45deg);
+}
+
+.winner {
+	width: 150px;
+	margin: 0 auto;
+    margin-bottom: 50px;
+	font-size: var(--large);
+}

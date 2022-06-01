@@ -1,0 +1,52 @@
+.btnAddPlayer {
+	height: 50px;
+	position: relative;
+	background-color: var(--secondary-color);
+}
+
+.btnAddPlayer::after,
+.btnAddPlayer::before {
+	content: "";
+	display: block;
+	position: absolute;
+	background-color: var(--primary-color);
+	border-radius: 3px;
+}
+
+.btnAddPlayer[disabled]::after,
+.btnAddPlayer[disabled]::before {
+	background-color: var(--gray);
+}
+
+.btnAddPlayer::after {
+	width: 4px;
+	height: 50%;
+	left: calc(50% - 2px);
+}
+
+.btnAddPlayer::before {
+	width: 50%;
+	height: 4px;
+	top: calc(50% - 2px);
+}
+
+.inputWrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin-bottom: 20px;
+}
+.inputWrapper input {
+	width: calc(100% - 70px);
+}
+
+.avatarWrapper {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 20px 0;
+}
+
+.avatarItem {
+	min-width: 25%;
+}

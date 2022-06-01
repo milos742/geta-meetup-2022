@@ -1,0 +1,23 @@
+.link,
+.link:hover {
+	color: var(--secondary-color);
+	background-color: var(--primary-color);
+}
+
+.link {
+	width: 100%;
+	display: flex;
+	min-height: 50px;
+	font-weight: bold;
+	align-items: center;
+	border-radius: 25px;
+	justify-content: center;
+	color: var(--primary-color);
+	background-color: var(--secondary-color);
+}
+
+.linkDisabled {
+	color: var(--gray);
+	pointer-events: none;
+	background-color: var(--lgray);
+}

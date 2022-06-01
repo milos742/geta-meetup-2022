@@ -1,0 +1,40 @@
+.btn {
+    display: grid;
+    place-items: center;
+    padding: 10px;
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 25px;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.primary,
+.secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.secondary,
+.primary:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+
+.remove,
+.btn:disabled {
+    background-color: var(--lgray);
+    color: var(--gray);
+}
+
+.remove:hover {
+    background-color: var(--error);
+    color: var(--error--dark);
+}
+
+.btn:disabled:hover {
+    cursor: default;
+}

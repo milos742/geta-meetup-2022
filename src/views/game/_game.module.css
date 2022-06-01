@@ -1,3 +1,43 @@
 .game {
-    color: green;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.playerScore:last-child {
+	margin-bottom: 0;
+}
+
+.link {
+	display: grid;
+	place-items: center;
+	padding: 10px;
+	min-width: 100px;
+	min-height: 50px;
+	border-radius: 25px;
+	background-color: var(--primary-color);
+	color: var(--secondary-color);
+	margin-left: var(--side-bumper);
+    text-decoration: none;
+}
+
+.link:hover {
+	background-color: var(--secondary-color);
+	color: var(--primary-color);
+}
+
+.gameWrapper {
+	flex: 1;
+	border: 1px solid var(--secondary-color);
+	overflow: scroll;
+	position: relative;
+}
+.evenSpace {
+	display: flex;
+	flex-direction: column;
+	
+}
+.evenSpace .playerScore {
+	flex: 1;
 }
